@@ -1217,7 +1217,7 @@ pre .javascript .function {
   opacity: 0;
 }
 .post-body {
-  font-family: 'Lato', -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "STHeiti", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
+  font-family: 'Lato', 'Lato', -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "STHeiti", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
 }
 @media (max-width: 767px) {
   .post-body {
@@ -1498,7 +1498,7 @@ pre .javascript .function {
 .posts-expand .post-meta {
   margin: 3px 0 60px 0;
   color: #999;
-  font-family: 'Lato', -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "STHeiti", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
+  font-family: 'Lato', 'Lato', -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "STHeiti", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
   font-size: 12px;
   text-align: center;
 }
@@ -1882,7 +1882,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #c325f6;
+  background: #3d87ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2010,13 +2010,10 @@ pre .javascript .function {
 .footer-inner {
   text-align: center;
 }
-#animate {
-  animation: iconAnimate 1.33s ease-in-out infinite;
-}
 .with-love {
   display: inline-block;
   margin: 0 5px;
-  color: #FF3399;
+  color: #0;
 }
 .powered-by,
 .theme-info {
@@ -2908,7 +2905,7 @@ hr {
   line-height: 2;
 }
 .container {
-  background-color: rgba(0,0,0,0.3);
+  background-color: #dddbdb;
 }
 .header-inner {
   padding-top: 0px;
@@ -2930,11 +2927,7 @@ hr {
   margin-bottom: 0px;
   padding: 10px 36px 36px 36px;
   box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
-  background-color: rgba(215,215,215,0.93);
-}
-.posts-expand .post-title {
-  font-size: 34px;
-  font-weight: 700;
+  background-color: #fff;
 }
 .posts-expand .post-title-link::before {
   background-image: linear-gradient(90deg, #a166ab 0%, #ef4e7b 25%, #f37055 50%, #ef4e7b 75%, #a166ab 100%);
@@ -2943,8 +2936,6 @@ hr {
   margin: 0px 0px 0px 0px;
 }
 .posts-expand .post-meta .post-description {
-  font-style: italic;
-  font-size: 14px;
   margin-top: 30px;
   margin-bottom: 0px;
   color: #666;
@@ -2974,7 +2965,6 @@ hr {
 .posts-expand .post-tags a {
   border-bottom: none;
   margin-right: 0px;
-  font-size: 13px;
   padding: 0px 5px;
   border-radius: 3px;
   transition-duration: 0.2s;
@@ -2992,11 +2982,9 @@ hr {
 }
 .post-nav-item a {
   color: #5073b8;
-  font-weight: bold;
 }
 .post-nav-item a:hover {
   color: #a166ab;
-  font-weight: bold;
 }
 .comments {
   background-color: #fff;
@@ -3056,7 +3044,7 @@ pre .deletion {
   box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.35);
 }
 .page-post-detail .sidebar-toggle-line {
-  background: #07b39b;
+  background: #fff;
 }
 .back-to-top {
   line-height: 1.5;
@@ -3074,14 +3062,12 @@ pre .deletion {
 }
 .sidebar {
   box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.5);
-  background-color: rgba(0,0,0,0.75);
+  background-color: #dddbdb;
 }
 .sidebar-inner {
   margin-top: 30px;
 }
 .sidebar-nav li {
-  font-size: 15px;
-  font-weight: bold;
   color: #07b39b;
 }
 .sidebar-nav li:hover {
@@ -3122,8 +3108,6 @@ img:hover {
 }
 .site-description {
   letter-spacing: 5px;
-  font-size: 15px;
-  font-weight: bold;
   margin-top: 15px;
   margin-left: 13px;
   color: #f37055;
@@ -3144,8 +3128,6 @@ img:hover {
   margin-top: 15px;
   color: rgba(7,179,155,0.75);
   margin-left: 6px;
-  font-size: 15px;
-  font-weight: bold;
 }
 .sidebar a {
   color: #ccc;
@@ -3311,7 +3293,6 @@ img.img-topic {
   width: 100%;
 }
 .post-sticky-flag {
-  font-size: inherit;
   float: left;
   color: #000;
   cursor: help;
@@ -3324,8 +3305,6 @@ img.img-topic {
 }
 p.description {
   text-align: center;
-  font-size: 14px;
-  font-style: italic;
   color: #666;
   margin-top: 30px;
 }
@@ -3344,6 +3323,9 @@ code.description {
 }
 .main {
   padding-bottom: 100px;
+}
+.main-inner {
+  width: 800px;
 }
 .posts-expand .post {
   margin-top: 45px;
@@ -3402,10 +3384,8 @@ a {
 }
 body {
   position: relative;
-  font-family: 'Lato', -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "STHeiti", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
-  font-size: 16px;
   line-height: 2;
-  color: #000;
+  color: #555;
 }
 .posts-expand .post-title-link {
   display: inline-block;

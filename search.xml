@@ -1,30 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[post]]></title>
-    <url>%2F2018%2F04%2F19%2Fpost%2F</url>
-    <content type="text"><![CDATA[this is a bref itroduction to bolg diyizhangdiyizhang1234567891011121314op(['is_trade', 'context_date', 'instance_id'], axis=1, inplace=True) if offline: tr = data[data.is_trade != -99] train = tr[tr.context_date &lt;= '2018-09-23 23:59:59'] val = tr[tr.context_date &gt; '2018-09-23 23:59:59'] train.drop(['context_date','instance_id'], axis=1, inplace=True) val.drop(['context_date','instance_id'], axis=1, inplace=True) return train, val, test else: train = data[data.is_trade != -99] train.drop(['context_date','instance_id'], axis=1, inplace=True) return train, test, test_instancedef lgb_train_offline() dierzjangdierzjangdasdad\asd `pythonop([‘is_trade’, ‘context_date’, ‘instance_id’], axis=1, inplace=True) if offline: tr = data[data.is_trade != -99] train = tr[tr.context_date &lt;= ‘2018-09-23 23:59:59’] val = tr[tr.context_date &gt; ‘2018-09-23 23:59:59’] train.drop([‘context_date’,’instance_id’], axis=1, inplace=True) val.drop([‘context_date’,’instance_id’], axis=1, inplace=True) return train, val, test else: train = data[data.is_trade != -99] train.drop([&apos;context_date&apos;,&apos;instance_id&apos;], axis=1, inplace=True) return train, test, test_instance]]></content>
+    <title><![CDATA[机器学习性能评估指标]]></title>
+    <url>%2F2018%2F04%2F23%2Fpost1%2F</url>
+    <content type="text"><![CDATA[机器学习在不同的业务需求下，需要使用不同的评估指标对算法效果进行评估，这篇文章将对常见的评估指标进行总结。 Todo list： [ ] 分类任务 [ ] Accuracy（准确率） [ ] Precision（） [ ] Recall [ ] F1 Score [ ] Roc curve [ ] PR curve [ ] AUC [ ] 回归任务 [ ] MAE [ ] MSE 评估指标根据任务类型不同主要分为两类： 分类任务评估指标 回归任务评价指标 混淆矩阵提到评价方法首先我们先引入混淆矩阵（Confusion Matrix)的概念，因为接下来的分类任务的评价指标Accuracy，precision，recall，F1 score都可以用混淆举中的元素表示。 混淆矩阵是用来反映某一个分类模型的分类结果的，其中行代表的是真实的类，列代表的是模型的分类，如下表： Confusion Matrix Predict Real $1600 5 $12 12 管线 $1 234 分类任务评价指标AccuracyAccuracy(准确率)是评价指标里最易懂，最直观的一个。它的定义如下: Accuracy= \frac{分类正确的样本数}{总样本数}用混淆矩阵表示就是： Accuracy= \frac{TP+TN}{TP+TN+FP+FN}即Accuracy表示]]></content>
       <categories>
-        <category>machie learning </category>
+        <category>机器学习</category>
       </categories>
       <tags>
-        <tag>test</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[test3]]></title>
-    <url>%2F2018%2F04%2F18%2Ftest3%2F</url>
-    <content type="text"><![CDATA[向Mac下优秀的markdown编辑器mou致敬 ##MaHua有哪些功能？ 方便的导入导出功能 直接把一个markdown的文本文件拖放到当前这个页面就可以了 导出为一个html格式的文件，样式一点也不会丢失 编辑和预览同步滚动，所见即所得（右上角设置） VIM快捷键支持，方便vim党们快速的操作 （右上角设置） 强大的自定义CSS功能，方便定制自己的展示 有数量也有质量的主题,编辑器和预览区域 完美兼容Github的markdown语法 预览区域代码高亮 所有选项自动记忆 ##有问题反馈在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流 邮件(dev.hubo#gmail.com, 把#换成@) QQ: 287759234 weibo: @草依山 twitter: @ihubo ##捐助开发者在兴趣的驱动下,写一个免费的东西，有欣喜，也还有汗水，希望你喜欢我的作品，同时也能支持一下。当然，有钱捧个钱场（右上角的爱心标志，支持支付宝和PayPal捐助），没钱捧个人场，谢谢各位。 ##感激感谢以下的项目,排名不分先后]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[test2]]></title>
-    <url>%2F2018%2F04%2F18%2Ftest2%2F</url>
-    <content type="text"><![CDATA[##MaHua是什么?一个在线编辑markdown文档的编辑器 向Mac下优秀的markdown编辑器mou致敬 ##MaHua有哪些功能？ 方便的导入导出功能 直接把一个markdown的文本文件拖放到当前这个页面就可以了 导出为一个html格式的文件，样式一点也不会丢失 编辑和预览同步滚动，所见即所得（右上角设置） VIM快捷键支持，方便vim党们快速的操作 （右上角设置） 强大的自定义CSS功能，方便定制自己的展示 有数量也有质量的主题,编辑器和预览区域 完美兼容Github的markdown语法 预览区域代码高亮 所有选项自动记忆 ##有问题反馈在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流 邮件(dev.hubo#gmail.com, 把#换成@) QQ: 287759234 weibo: @草依山 twitter: @ihubo ##捐助开发者在兴趣的驱动下,写一个免费的东西，有欣喜，也还有汗水，希望你喜欢我的作品，同时也能支持一下。当然，有钱捧个钱场（右上角的爱心标志，支持支付宝和PayPal捐助），没钱捧个人场，谢谢各位。 ##感激感谢以下的项目,排名不分先后 mou ace jquery ##关于作者]]></content>
-      <categories>
-        <category>markdown</category>
-      </categories>
-      <tags>
-        <tag>-mark  -down</tag>
+        <tag>机器学习</tag>
+        <tag>评估方法</tag>
+        <tag>笔记</tag>
       </tags>
   </entry>
 </search>
