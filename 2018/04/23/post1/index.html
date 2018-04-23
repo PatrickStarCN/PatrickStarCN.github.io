@@ -154,7 +154,7 @@
 <meta property="og:site_name" content="这是一个博客">
 <meta property="og:description" content="机器学习在不同的业务需求下，需要使用不同的评估指标对算法效果进行评估，这篇文章将对常见的评估指标进行总结。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-23T09:40:03.626Z">
+<meta property="og:updated_time" content="2018-04-23T09:57:56.576Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习性能评估指标">
 <meta name="twitter:description" content="机器学习在不同的业务需求下，需要使用不同的评估指标对算法效果进行评估，这篇文章将对常见的评估指标进行总结。">
@@ -428,7 +428,7 @@
                 
               
 
-              <time title="创建时间：2018-04-23 14:21:55 / 修改时间：17:40:03" itemprop="dateCreated datePublished" datetime="2018-04-23T14:21:55+08:00">2018-04-23</time>
+              <time title="创建时间：2018-04-23 14:21:55 / 修改时间：17:57:56" itemprop="dateCreated datePublished" datetime="2018-04-23T14:21:55+08:00">2018-04-23</time>
             
 
             
@@ -520,33 +520,6 @@
 </ul>
 <h2 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵"></a>混淆矩阵</h2><p>提到评价方法首先我们先引入<code>混淆矩阵（Confusion Matrix)</code>的概念，因为接下来的分类任务的评价指标<code>Accuracy</code>，<code>precision</code>，<code>recall</code>，<code>F1 score</code>都可以用混淆举中的元素表示。</p>
 <p>混淆矩阵是用来反映某一个分类模型的分类结果的，其中行代表的是真实的类，列代表的是模型的分类，如下表：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>Confusion Matrix</th>
-<th style="text-align:right">Predict</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Real</td>
-<td style="text-align:right">$1600</td>
-<td style="text-align:center">5</td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align:right">$12</td>
-<td style="text-align:center">12</td>
-</tr>
-<tr>
-<td>管线</td>
-<td style="text-align:right">$1</td>
-<td style="text-align:center">234</td>
-</tr>
-</tbody>
-</table>
-</div>
 <h2 id="分类任务评价指标"><a href="#分类任务评价指标" class="headerlink" title="分类任务评价指标"></a>分类任务评价指标</h2><h3 id="Accuracy"><a href="#Accuracy" class="headerlink" title="Accuracy"></a>Accuracy</h3><p><code>Accuracy</code>(准确率)是评价指标里最易懂，最直观的一个。它的定义如下:</p>
 <script type="math/tex; mode=display">Accuracy= \frac{分类正确的样本数}{总样本数}</script><p>用混淆矩阵表示就是：</p>
 <script type="math/tex; mode=display">Accuracy= \frac{TP+TN}{TP+TN+FP+FN}</script><p>即Accuracy表示</p>
