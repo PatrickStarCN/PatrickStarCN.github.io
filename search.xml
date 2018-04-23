@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[机器学习性能评估指标]]></title>
     <url>%2F2018%2F04%2F23%2Fpost1%2F</url>
-    <content type="text"><![CDATA[机器学习在不同的业务需求下，需要使用不同的评估指标对算法效果进行评估，这篇文章将对常见的评估指标进行总结。 Todo list： [ ] 分类任务 [ ] Accuracy（准确率） [ ] Precision（） [ ] Recall [ ] F1 Score [ ] Roc curve [ ] PR curve [ ] AUC [ ] 回归任务 [ ] MAE [ ] MSE 评估指标根据任务类型不同主要分为两类： 分类任务评估指标 回归任务评价指标 混淆矩阵提到评价方法首先我们先引入混淆矩阵（Confusion Matrix)的概念，因为接下来的分类任务的评价指标Accuracy，precision，recall，F1 score都可以用混淆举中的元素表示。 混淆矩阵是用来反映某一个分类模型的分类结果的，其中行代表的是真实的类，列代表的是模型的分类，如下表： 分类任务评价指标AccuracyAccuracy(准确率)是评价指标里最易懂，最直观的一个。它的定义如下: Accuracy= \frac{分类正确的样本数}{总样本数}用混淆矩阵表示就是： Accuracy= \frac{TP+TN}{TP+TN+FP+FN}即Accuracy表示]]></content>
+    <content type="text"><![CDATA[机器学习在不同的业务需求下，需要使用不同的评估指标对算法效果进行评估，这篇文章将对常见的评估指标进行总结。 Todo list： 分类任务 Accuracy（准确率） Precision（） Recall F1 Score Roc curve PR curve AUC 回归任务 MAE MSE 评估指标根据任务类型不同主要分为两类： 分类任务评估指标 回归任务评价指标 混淆矩阵提到评价方法首先我们先引入混淆矩阵（Confusion Matrix)的概念，因为接下来的分类任务的评价指标Accuracy，precision，recall，F1 score都可以用混淆举中的元素表示。 混淆矩阵是用来反映某一个分类模型的分类结果的，其中行代表的是真实的类，列代表的是模型的分类，如下表： 分类任务评价指标AccuracyAccuracy(准确率)是评价指标里最易懂，最直观的一个。它的定义如下: $$ Accuracy= \frac{分类正确的样本数}{总样本数} $$ 用混淆矩阵表示就是：$$ Accuracy= \frac{TP+TN}{TP+TN+FP+FN} $$ 即Accuracy表示]]></content>
       <categories>
         <category>机器学习</category>
       </categories>
