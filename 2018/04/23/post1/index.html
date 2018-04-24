@@ -154,7 +154,7 @@
 <meta property="og:site_name" content="这是一个博客">
 <meta property="og:description" content="机器学习在不同的业务需求下，需要使用不同的评估指标对算法效果进行评估，这篇文章将对常见的评估指标进行总结。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-23T10:19:16.806Z">
+<meta property="og:updated_time" content="2018-04-24T08:28:20.059Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习性能评估指标">
 <meta name="twitter:description" content="机器学习在不同的业务需求下，需要使用不同的评估指标对算法效果进行评估，这篇文章将对常见的评估指标进行总结。">
@@ -428,12 +428,22 @@
                 
               
 
-              <time title="创建时间：2018-04-23 14:21:55 / 修改时间：18:19:16" itemprop="dateCreated datePublished" datetime="2018-04-23T14:21:55+08:00">2018-04-23</time>
+              <time title="创建时间：2018-04-23 14:21:55" itemprop="dateCreated datePublished" datetime="2018-04-23T14:21:55+08:00">2018-04-23</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                <time title="修改时间：2018-04-24 16:28:20" itemprop="dateModified" datetime="2018-04-24T16:28:20+08:00">2018-04-24</time>
               
             
           </span>
@@ -498,8 +508,8 @@
 <p>Todo list：</p>
 <ul>
 <li style="list-style: none"><input type="checkbox"> <strong>分类任务</strong><ul>
-<li style="list-style: none"><input type="checkbox"> Accuracy（准确率）</li>
-<li style="list-style: none"><input type="checkbox"> Precision（）</li>
+<li style="list-style: none"><input type="checkbox" checked> Accuracy</li>
+<li style="list-style: none"><input type="checkbox"> Precision</li>
 <li style="list-style: none"><input type="checkbox"> Recall</li>
 <li style="list-style: none"><input type="checkbox"> F1 Score</li>
 <li style="list-style: none"><input type="checkbox"> Roc curve</li>
@@ -513,17 +523,44 @@
 </ul>
 </li>
 </ul>
+<div class="note info"><p>由于翻译问题，<code>Accuracy</code>（准确率），<code>Precision</code>(精确率，查准率)，<code>Recall</code>（召回率，查全率）中文表述会存在歧义，因此下文均用英文表述。</p></div>
+
 <p>评估指标根据任务类型不同主要分为两类：</p>
 <ul>
-<li>分类任务评估指标</li>
-<li>回归任务评价指标</li>
+<li><p>分类任务评估指标</p>
+<ul>
+<li>Accuracy</li>
+<li>Precision</li>
+<li>Recall</li>
+<li>F1 Score</li>
+<li>Roc curve</li>
+<li>PR curve</li>
+<li>AUC</li>
+</ul>
+</li>
+<li><p>回归任务评价指标</p>
+<ul>
+<li>MAE (Mean Absolute Error，绝对平均误差)</li>
+<li>MSE (Mean Squared Error，均方误差)</li>
+</ul>
+</li>
 </ul>
 <h2 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵"></a>混淆矩阵</h2><p>提到评价方法首先我们先引入<code>混淆矩阵（Confusion Matrix)</code>的概念，因为接下来的分类任务的评价指标<code>Accuracy</code>，<code>precision</code>，<code>recall</code>，<code>F1 score</code>都可以用混淆举中的元素表示。</p>
 <p>混淆矩阵是用来反映某一个分类模型的分类结果的，其中行代表的是真实的类，列代表的是模型的分类，如下表：</p>
-<h2 id="分类任务评价指标"><a href="#分类任务评价指标" class="headerlink" title="分类任务评价指标"></a>分类任务评价指标</h2><h3 id="Accuracy"><a href="#Accuracy" class="headerlink" title="Accuracy"></a>Accuracy</h3><p><code>Accuracy</code>(准确率)是评价指标里最易懂，最直观的一个。它的定义如下:</p>
+<h2 id="分类任务评价指标"><a href="#分类任务评价指标" class="headerlink" title="分类任务评价指标"></a>分类任务评价指标</h2><h3 id="Accuracy"><a href="#Accuracy" class="headerlink" title="Accuracy"></a>Accuracy</h3><p><code>Accuracy</code>是评价指标里最易懂，最直观的一个。它的定义如下:</p>
 <p>$$ Accuracy= \frac{分类正确的样本数}{总样本数} $$</p>
 <p>用混淆矩阵表示就是：<br>$$ Accuracy= \frac{TP+TN}{TP+TN+FP+FN} $$</p>
-<p>即Accuracy表示</p>
+<p>即Accuracy表示分类器正确分类的样本数与总样本数之比。</p>
+<div class="note warning"><p>注意不均衡数据会对<code>Accuracy</code>产生极大影响。例如在做债务人逾期率预测任务时，逾期（即未在指定日期还款）的概率相对较低，在此我们假设100人里有一人逾期，如果分类器简单的把所有人都标记为非逾期（未进行预测），那么这个任务的Accuray将会是99%，99%的准确率看起来很高，然而并未反应分类器的好坏（分类器只是简单地标记所有样本为非逾期）。</p></div>
+
+<h3 id="Precision-和-Recall"><a href="#Precision-和-Recall" class="headerlink" title="Precision 和 Recall"></a>Precision 和 Recall</h3><p>先从混淆矩阵定义来看<code>Presion</code>和<code>Recall</code>的定义：<br>$$ Presion= \frac{TP}{TP+FP} $$<br>$$ Recall= \frac{TP}{TP+FN} $$<br>TP表示预测为正例中真正的正样本数，TP+FP表示预测为正的所有样本数，所以<code>Presion</code>表示的是<strong>预测为正例的样本中有多少是真正的正例</strong>。</p>
+<p>同理TP+FN表示样本中正例的总数，所以<code>Recall</code>表示的是<strong>样本中的正例被准确预测的比例</strong>。</p>
+<p><code>Presion</code>和<code>Recall</code>有着自己的侧重点，在不同的业务需求下重要性也不同。下面举例说明：</p>
+<div class="note default"><p>推荐算法中，往往会给用户推荐较多的候补项，这时候我们希望我们推荐的候补项中尽可能多的是用户感兴趣的内容，这种情况我们希望<code>Precision</code>尽可能的大。</p></div>
+
+<div class="note default"><p>地震预测任务中，我们宁愿误报也不愿意错过一次可能的正确预测，所以我们的侧重点就是尽可能的提高样本中的正例被准确预测的比例，如果100次任务里只有一次地震，我们要提高这次地震被预测出来的概率，也就是“宁可错杀以前也不愿放走一个”，这种情况就希望<code>Recall</code>尽可能的大。</p></div>
+
+<h3 id="F1-Score"><a href="#F1-Score" class="headerlink" title="F1 Score"></a>F1 Score</h3><p>上节提到了</p>
 
       
     </div>
@@ -734,6 +771,11 @@
                   
                 </span>
               
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/PatrickStarCN/activities" target="_blank" title="ZhiHu" rel="external nofollow"><i class="fa fa-fw fa-zhihu"></i>ZhiHu</a>
+                  
+                </span>
+              
             </div>
           
 
@@ -779,7 +821,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#混淆矩阵"><span class="nav-number">1.</span> <span class="nav-text">混淆矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分类任务评价指标"><span class="nav-number">2.</span> <span class="nav-text">分类任务评价指标</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Accuracy"><span class="nav-number">2.1.</span> <span class="nav-text">Accuracy</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#混淆矩阵"><span class="nav-number">1.</span> <span class="nav-text">混淆矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分类任务评价指标"><span class="nav-number">2.</span> <span class="nav-text">分类任务评价指标</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Accuracy"><span class="nav-number">2.1.</span> <span class="nav-text">Accuracy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Precision-和-Recall"><span class="nav-number">2.2.</span> <span class="nav-text">Precision 和 Recall</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F1-Score"><span class="nav-number">2.3.</span> <span class="nav-text">F1 Score</span></a></li></ol></li></ol></div>
             
 
           </div>
