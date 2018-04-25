@@ -1,16 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[机器学习性能评估指标]]></title>
-    <url>%2F2018%2F04%2F23%2Fpost1%2F</url>
-    <content type="text"><![CDATA[机器学习在不同的业务需求下，需要使用不同的评估指标对算法效果进行评估，这篇文章将对常见的评估指标进行总结。 Todo list： 分类任务 Accuracy Precision Recall F1 Score Roc curve PR curve AUC 回归任务 MAE MSE 由于翻译问题，Accuracy（准确率），Precision(精确率，查准率)，Recall（召回率，查全率）中文表述会存在歧义，因此下文均用英文表述。 评估指标根据任务类型不同主要分为两类： 分类任务评估指标 Accuracy Precision Recall F1 Score Roc curve PR curve AUC 回归任务评价指标 MAE (Mean Absolute Error，绝对平均误差) MSE (Mean Squared Error，均方误差) 混淆矩阵提到评价方法首先我们先引入混淆矩阵（Confusion Matrix)的概念，因为接下来的分类任务的评价指标Accuracy，precision，recall，F1 score都可以用混淆举中的元素表示。 混淆矩阵是用来反映某一个分类模型的分类结果的，其中行代表的是真实的类，列代表的是模型的分类，如下表： 分类任务评价指标AccuracyAccuracy是评价指标里最易懂，最直观的一个。它的定义如下: $$ Accuracy= \frac{分类正确的样本数}{总样本数} $$ 用混淆矩阵表示就是：$$ Accuracy= \frac{TP+TN}{TP+TN+FP+FN} $$ 即Accuracy表示分类器正确分类的样本数与总样本数之比。 注意不均衡数据会对Accuracy产生极大影响。例如在做债务人逾期率预测任务时，逾期（即未在指定日期还款）的概率相对较低，在此我们假设100人里有一人逾期，如果分类器简单的把所有人都标记为非逾期（未进行预测），那么这个任务的Accuray将会是99%，99%的准确率看起来很高，然而并未反应分类器的好坏（分类器只是简单地标记所有样本为非逾期）。 Precision 和 Recall先从混淆矩阵定义来看Presion和Recall的定义：$$ Presion= \frac{TP}{TP+FP} $$$$ Recall= \frac{TP}{TP+FN} $$TP表示预测为正例中真正的正样本数，TP+FP表示预测为正的所有样本数，所以Presion表示的是预测为正例的样本中有多少是真正的正例。 同理TP+FN表示样本中正例的总数，所以Recall表示的是样本中的正例被准确预测的比例。 Presion和Recall有着自己的侧重点，在不同的业务需求下重要性也不同。下面举例说明： 推荐算法中，往往会给用户推荐较多的候补项，这时候我们希望我们推荐的候补项中尽可能多的是用户感兴趣的内容，这种情况我们希望Precision尽可能的大。 地震预测任务中，我们宁愿误报也不愿意错过一次可能的正确预测，所以我们的侧重点就是尽可能的提高样本中的正例被准确预测的比例，如果100次任务里只有一次地震，我们要提高这次地震被预测出来的概率，也就是“宁可错杀以前也不愿放走一个”，这种情况就希望Recall尽可能的大。 F1 Score上节提到了]]></content>
+    <title><![CDATA[NoteLR]]></title>
+    <url>%2F2018%2F04%2F25%2FNoteLR%2F</url>
+    <content type="text"><![CDATA[## ## ##]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[机器学习笔记之SVM(支持向量机)]]></title>
+    <url>%2F2018%2F04%2F25%2FNoteSVM%2F</url>
+    <content type="text"><![CDATA[Todo list： 算法原理 算法推倒 算法优化 算法实现 一些疑问]]></content>
       <categories>
         <category>机器学习</category>
       </categories>
       <tags>
         <tag>机器学习</tag>
-        <tag>评估方法</tag>
+        <tag>算法</tag>
         <tag>笔记</tag>
+        <tag>SVM</tag>
+        <tag>支持向量机</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[机器学习性能评估指标]]></title>
+    <url>%2F2018%2F04%2F23%2FThePerformanceEvaluationOfMachineLearning%2F</url>
+    <content type="text"><![CDATA[机器学习在不同的业务需求下，需要使用不同的评估指标对算法效果进行评估，这篇文章将对常见的评估指标进行总结。 Todo list： 分类任务 Accuracy Precision Recall F1 Score Roc curve PR curve AUC 回归任务 MAE MSE 由于翻译问题，Accuracy（准确率），Precision(精确率，查准率)，Recall（召回率，查全率）中文表述会存在歧义，因此下文均用英文表述。 评估指标根据任务类型不同主要分为两类： 分类任务评估指标 Accuracy Precision Recall F1 Score Roc curve PR curve AUC 回归任务评价指标 MAE (Mean Absolute Error，绝对平均误差) MSE (Mean Squared Error，均方误差) 混淆矩阵提到评价方法首先我们先引入混淆矩阵（Confusion Matrix)的概念，因为接下来的分类任务的评价指标Accuracy，precision，recall，F1 score都可以用混淆举中的元素表示。 混淆矩阵是用来反映某一个分类模型的分类结果的，其中行代表的是真实的类，列代表的是模型的分类，如下表： 分类任务评价指标AccuracyAccuracy是评价指标里最易懂，最直观的一个。它的定义如下: $$ Accuracy= \frac{分类正确的样本数}{总样本数} $$ 用混淆矩阵表示就是：$$ Accuracy= \frac{TP+TN}{TP+TN+FP+FN} $$ 即Accuracy表示分类器正确分类的样本数与总样本数之比。 注意不均衡数据会对Accuracy产生极大影响。例如在做债务人逾期率预测任务时，逾期（即未在指定日期还款）的概率相对较低，在此我们假设100人里有一人逾期，如果分类器简单的把所有人都标记为非逾期（未进行预测），那么这个任务的Accuray将会是99%，99%的准确率看起来很高，然而并未反应分类器的好坏（分类器只是简单地标记所有样本为非逾期）。 Precision 和 Recall先从混淆矩阵定义来看Precision和Recall的定义：$$ Presion= \frac{TP}{TP+FP} $$$$ Recall= \frac{TP}{TP+FN} $$TP表示预测为正例中真正的正样本数，TP+FP表示预测为正的所有样本数，所以Precision表示的是预测为正例的样本中有多少是真正的正例。 同理TP+FN表示样本中正例的总数，所以Recall表示的是样本中的正例被准确预测的比例。 Precision和Recall有着自己的侧重点，在不同的业务需求下重要性也不同。下面举例说明： 推荐算法中，往往会给用户推荐较多的候补项，这时候我们希望我们推荐的候补项中尽可能多的是用户感兴趣的内容，这种情况我们希望Precision尽可能的大。 地震预测任务中，我们宁愿误报也不愿意错过一次可能的正确预测，所以我们的侧重点就是尽可能的提高样本中的正例被准确预测的比例，如果100次任务里只有一次地震，我们要提高这次地震被预测出来的概率，也就是“宁可错杀以前也不愿放走一个”，这种情况就希望Recall尽可能的大。 F1 ScoreF1 Score是一个综合考虑Precision和Recall的评价指标，他的定义是二者的调和平均：$$F1=\frac{1}{\frac{1}{2}(\frac{1}{Precision}+\frac{1}{Recall})}\implies F1=\frac{2\cdot Precision\cdot Recall}{Precision+Recall}$$Precision和Recall都高时F1 Score也会高。 F1 Score的变种$F_\beta=（1+\beta^2）\cdot\frac{Precision \cdot Recall}{\beta^2 \cdot Precision+Recall}$运行我们通过调节$\beta$值来调整Precision和Recall的权重。其中$\beta&gt;0$,当$\beta&gt;1$时Precision有更大影响，$\beta&lt;1$时Recall有更大影响。]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>笔记</tag>
+        <tag>评估方法</tag>
       </tags>
   </entry>
 </search>
