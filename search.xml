@@ -30,14 +30,14 @@
   <entry>
     <title><![CDATA[机器学习笔记之LR(逻辑回归)]]></title>
     <url>%2F2018%2F04%2F25%2FNoteLR%2F</url>
-    <content type="text"><![CDATA[逻辑回归是一个回归函数，但是应用在分类问题上，可以对事件发生的概率进行预测。 线性回归线性回归公式：$$f(x_i)=\omega x_i+b$$目的是使$f(x_i)$尽可能的靠近$y_i$(实际值). 求解$\omega$和$b$一般采均方误差最小化，这种方法又被称为“最小二乘法”，即找到一条直线是所有点到直线的欧氏距离最小，即$$\(omega^,b^)=\arg\min$$]]></content>
+    <content type="text"><![CDATA[逻辑回归是一个回归函数，但是应用在分类问题上，可以对事件发生的概率进行预测。 线性回归线性回归公式：$$f(x_i)=\omega x_i+b$$目的是使$f(x_i)$尽可能的靠近$y_i$(实际值). 求解$\omega$和$b$一般采均方误差最小化，这种方法又被称为“最小二乘法”，即找到一条直线使所有点到直线的欧氏距离最小，即 $$(\omega^,b^) = \mathop{\arg\min}\limits_{(\omega,b)}\sum_{i=1}^m{(f(x_i)-u_i)^2}= \mathop{\arg\min}\limits_{(\omega,b)}\sum_{i=1}^m{(y_i-\omega x_i-b)^2}$$ 求解$\omega$和$b$，将上式分别对$\omega$和$b$求导有： $$\omega =\frac{\sum\limits_{i=1}^m{y_i(x_i-\bar x)}}{\sum\limits_{i=1}^m{x_i^2-\frac1m\bigg(\sum\limits_{i=1}^m{x_i}\bigg)^2}}$$$$b=\frac1m\sum_{i=1}^m(y_i-\omega x_i)$$ 上述是一元线性回归的情况.对于多元线性回归则有： $$f(\boldsymbol x_i)=\boldsymbol \omega^ \mathrm{T}\boldsymbol x_i+b$$使$f(\boldsymbol x_i)$尽可能的靠近$y_i$(实际值)]]></content>
       <categories>
         <category>机器学习</category>
       </categories>
       <tags>
         <tag>机器学习</tag>
-        <tag>算法</tag>
         <tag>笔记</tag>
+        <tag>算法</tag>
         <tag>LR</tag>
         <tag>逻辑回归</tag>
       </tags>
@@ -51,8 +51,8 @@
       </categories>
       <tags>
         <tag>机器学习</tag>
-        <tag>算法</tag>
         <tag>笔记</tag>
+        <tag>算法</tag>
         <tag>SVM</tag>
         <tag>支持向量机</tag>
       </tags>

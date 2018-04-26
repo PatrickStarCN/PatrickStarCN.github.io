@@ -147,14 +147,14 @@
 
 
   <meta name="description" content="逻辑回归是一个回归函数，但是应用在分类问题上，可以对事件发生的概率进行预测。">
-<meta name="keywords" content="机器学习,算法,笔记,LR,逻辑回归">
+<meta name="keywords" content="机器学习,笔记,算法,LR,逻辑回归">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习笔记之LR(逻辑回归)">
 <meta property="og:url" content="https://patrickstarcn.github.io/2018/04/25/NoteLR/index.html">
 <meta property="og:site_name" content="派大星的水母">
 <meta property="og:description" content="逻辑回归是一个回归函数，但是应用在分类问题上，可以对事件发生的概率进行预测。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-25T09:36:38.633Z">
+<meta property="og:updated_time" content="2018-04-26T06:54:23.400Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习笔记之LR(逻辑回归)">
 <meta name="twitter:description" content="逻辑回归是一个回归函数，但是应用在分类问题上，可以对事件发生的概率进行预测。">
@@ -428,12 +428,22 @@
                 
               
 
-              <time title="创建时间：2018-04-25 11:10:55 / 修改时间：17:36:38" itemprop="dateCreated datePublished" datetime="2018-04-25T11:10:55+08:00">2018-04-25</time>
+              <time title="创建时间：2018-04-25 11:10:55" itemprop="dateCreated datePublished" datetime="2018-04-25T11:10:55+08:00">2018-04-25</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                <time title="修改时间：2018-04-26 14:54:23" itemprop="dateModified" datetime="2018-04-26T14:54:23+08:00">2018-04-26</time>
               
             
           </span>
@@ -496,7 +506,12 @@
       
         <p>逻辑回归是一个回归函数，但是应用在分类问题上，可以对事件发生的概率进行预测。<br><a id="more"></a></p>
 <h3 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h3><p>线性回归公式：<br>$$f(x_i)=\omega x_i+b$$<br>目的是使$f(x_i)$尽可能的靠近$y_i$(实际值).</p>
-<p>求解$\omega$和$b$一般采均方误差最小化，这种方法又被称为“最小二乘法”，即找到一条直线是所有点到直线的欧氏距离最小，即<br>$$\(omega^<em>,b^</em>)=\arg\min$$</p>
+<p>求解$\omega$和$b$一般采均方误差最小化，这种方法又被称为“最小二乘法”，即找到一条直线使所有点到直线的欧氏距离最小，即</p>
+<p>$$<br>(\omega^<em>,b^</em>) = \mathop{\arg\min}\limits_{(\omega,b)}\sum_{i=1}^m{(f(x_i)-u_i)^2}= \mathop{\arg\min}\limits_{(\omega,b)}\sum_{i=1}^m{(y_i-\omega x_i-b)^2}<br>$$</p>
+<p>求解$\omega$和$b$，将上式分别对$\omega$和$b$求导有：</p>
+<p>$$<br>\omega =\frac{\sum\limits_{i=1}^m{y_i(x_i-\bar x)}}{\sum\limits_{i=1}^m{x_i^2-\frac1m\bigg(\sum\limits_{i=1}^m{x_i}\bigg)^2}}<br>$$<br>$$<br>b=\frac1m\sum_{i=1}^m(y_i-\omega x_i)<br>$$</p>
+<p>上述是一元线性回归的情况.对于多元线性回归则有：</p>
+<p>$$f(\boldsymbol x_i)=\boldsymbol \omega^ \mathrm{T}\boldsymbol x_i+b$$<br>使$f(\boldsymbol x_i)$尽可能的靠近$y_i$(实际值)</p>
 
       
     </div>
@@ -547,9 +562,9 @@
           
             <a href="/tags/机器学习/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
           
-            <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
-          
             <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+          
+            <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
           
             <a href="/tags/LR/" rel="tag"><i class="fa fa-tag"></i> LR</a>
           
