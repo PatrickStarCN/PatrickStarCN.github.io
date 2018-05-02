@@ -147,14 +147,14 @@
 
 
   <meta name="description" content="支持向量机是一种二分类模型，是特征空间上间隔最大化的线性分类器。这篇是关于SVM的笔记。">
-<meta name="keywords" content="机器学习,算法,笔记,SVM,支持向量机">
+<meta name="keywords" content="机器学习,笔记,算法,SVM,支持向量机">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习笔记之SVM(支持向量机)">
 <meta property="og:url" content="https://patrickstarcn.github.io/2018/04/25/NoteSVM/index.html">
 <meta property="og:site_name" content="派大星的水母">
 <meta property="og:description" content="支持向量机是一种二分类模型，是特征空间上间隔最大化的线性分类器。这篇是关于SVM的笔记。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-02T06:46:21.732Z">
+<meta property="og:updated_time" content="2018-05-02T09:50:47.212Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习笔记之SVM(支持向量机)">
 <meta name="twitter:description" content="支持向量机是一种二分类模型，是特征空间上间隔最大化的线性分类器。这篇是关于SVM的笔记。">
@@ -443,7 +443,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                <time title="修改时间：2018-05-02 14:46:21" itemprop="dateModified" datetime="2018-05-02T14:46:21+08:00">2018-05-02</time>
+                <time title="修改时间：2018-05-02 17:50:47" itemprop="dateModified" datetime="2018-05-02T17:50:47+08:00">2018-05-02</time>
               
             
           </span>
@@ -513,11 +513,17 @@
 <li style="list-style: none"><input type="checkbox"> <strong>算法实现</strong></li>
 <li style="list-style: none"><input type="checkbox"> <strong>一些疑问</strong></li>
 </ul>
-<p>基于训练集，SVM想找到一个最优划分超平面将不同的类别分开，学习的策略是使间隔最大化（之后说明），则该超平面可以写成：<br>$$<br>\boldsymbol\omega^\mathrm{T}\boldsymbol x+b=0<br>$$<br>其中$\boldsymbol\omega$为超平面法向量决定超平面方向，$b$为位移项决定超平面与原点的距离。<br>令$f(\boldsymbol x)=\boldsymbol\omega^\mathrm{T}\boldsymbol x+b$则$f(\boldsymbol x)=0$时表示$\boldsymbol x$在超平面上，其他任意点$\boldsymbol x$到超平面的距离为：<br>$$<br>r=\cfrac{|\boldsymbol\omega^{\mathrm{T}}\boldsymbol x+b|}{||\boldsymbol\omega||}<br>$$</p>
-<div class="note info"><p>任意点到超平面距离公式证明。<br>点到平面距离公式为：<br>$$<br>d=\frac{|Ax_0+By_0+Cz_0+D|}{\sqrt{A^2+B^2+C^2}}<br>$$<br>公式中的平面方程为Ax+By+Cz+D=0，点P的坐标$(x_0,y_0,z_0)$，d为点P到平面的距离。分母为系数的2范数，分子是将点带入超平面公式后的绝对值。带入超平面参数即可。<br></p></div><br><div class="note info"><p>SVM为什么采用间隔最大化？<br><br>当训练数据线性可分时，存在无穷个分离超平面可以将两类数据正确分开。<br><br>感知机利用误分类最小策略，求得分离超平面，不过此时的解有无穷多个。<br><br>线性可分支持向量机利用间隔最大化求得最优分离超平面，这时，解是唯一的。另一方面，此时的分隔超平面所产生的分类结果是最鲁棒的，对未知实例的泛化能力最强。</p></div>
+<p>基于训练集，SVM想找到一个最优划分超平面将不同的类别分开，学习的策略是使间隔最大化（之后说明），则该超平面可以写成：<br>$$<br>\boldsymbol\omega^\mathrm{T}\boldsymbol x+b=0<br>$$<br>其中$\boldsymbol\omega$为超平面法向量决定超平面方向，$b$为位移项决定超平面与原点的距离。<br>令$f(\boldsymbol x)=\boldsymbol\omega^\mathrm{T}\boldsymbol x+b$则$f(\boldsymbol x)=0$时表示$\boldsymbol x$在超平面上。</p>
+<p>样本数据线性可分的情况下，我们假设当$f(\boldsymbol x)&gt;0$时令其所对应的$y=+1$,当$f(\boldsymbol x)&lt;0$时令其所对应的$y=-1$</p>
+<div class="note info"><p>SVM为什么采用间隔最大化？<br><br>当训练数据线性可分时，存在无穷个分离超平面可以将两类数据正确分开。<br><br>感知机利用误分类最小策略，求得分离超平面，不过此时的解有无穷多个。<br><br>线性可分支持向量机利用间隔最大化求得最优分离超平面，这时，解是唯一的。另一方面，此时的分隔超平面所产生的分类结果是最鲁棒的，对未知实例的泛化能力最强。</p></div>
 
 
-<p>###几何间隔与函数间隔</p>
+<h3 id="几何间隔与函数间隔"><a href="#几何间隔与函数间隔" class="headerlink" title="几何间隔与函数间隔"></a>几何间隔与函数间隔</h3><p>函数间隔的定义如下，对于某一样本点$\boldsymbol x_i$：<br>$$<br>\hat\gamma_i=yf(\boldsymbol x)=y(\boldsymbol\omega^{\mathrm{T}}\boldsymbol x+b)<br>$$<br>函数间隔保证自身的非负性,$f(\boldsymbol x)&lt;0$时$y=-1$。且$\hat\gamma_i$越大该样本点分类的可信度越高。<br>但是当成比例改变$\boldsymbol\omega$和$b$时超平面不变，但函数间隔会变大。用几何间隔能更好的解决这个用问题，即样本点到超平面的距离：<br>$$<br>\gamma_i=\cfrac{|\boldsymbol\omega^{\mathrm{T}}\boldsymbol x+b|}{||\boldsymbol\omega||}=y_i\cfrac{\boldsymbol\omega^{\mathrm{T}}\boldsymbol x+b}{||\boldsymbol\omega||}=\cfrac{\hat\gamma_i}{||\boldsymbol\omega||}<br>$$<br>对于一整个样本集我们把最小的样本点的间隔当做整个样本的间隔即：<br>$$<br>\gamma=\min\limits_{i=1,\cdots,n} \hat\gamma_i<br>$$</p>
+<div class="note info"><p>函数间隔我觉得有点鸡肋，不是很明白其存在的意义，直接用几何上的直观解释，点到超平面距离即几何间隔就可以解决的问题。</p></div>
+
+<div class="note info"><p>任意点到超平面距离公式证明。<br>设$\boldsymbol x_0$是样本点在超平面上的投影，即$\boldsymbol\omega^\mathrm{T}\boldsymbol x_0+b=0$，则$\overrightarrow{\boldsymbol x_0\boldsymbol x_i}$与法向量$\boldsymbol\omega$平行，所以：<br>$$<br>|\boldsymbol\omega\cdot\overrightarrow{\boldsymbol x_0\boldsymbol x_i}|=|\boldsymbol\omega||\overrightarrow{\boldsymbol x_0\boldsymbol x_i}|=\sqrt{\omega_1^2+\cdots+\omega_n^2}d=||\boldsymbol\omega||d<br>$$<br>又因为$\boldsymbol\omega^{\mathrm T}\boldsymbol x_0=-b$<br>$$<br>\begin{array}<br>\boldsymbol\omega\cdot\overrightarrow{\boldsymbol x_0\boldsymbol x_i}&amp;=&amp;\omega^1(x_i^1-x_0^1)+\cdots+\omega^n(x_i^n-x_0^n)\\&amp;=&amp;<br>\omega^1x_i^1+\cdots+\omega^nx_i^n-(\omega^1x_0^1+\dots+\omega^ix_0^i)\\&amp;=&amp;\boldsymbol\omega^{\mathrm T}\boldsymbol x_i+b<br>\end{array}<br>$$<br>则有<br>$$<br>|\boldsymbol\omega^{\mathrm T}\boldsymbol x_i+b|=||\boldsymbol\omega||d\\<br>d=\cfrac{|\boldsymbol\omega^{\mathrm T}\boldsymbol x_i+b|}{||\boldsymbol\omega||}<br>$$<br><br></p></div>
+
+<h3 id="最大化间隔"><a href="#最大化间隔" class="headerlink" title="最大化间隔"></a>最大化间隔</h3><p>假设使样本中离超平面最近的样本点与超平面保证一定距离（可以证明，这样的超平面只有一个），令最近的样本点的函数间隔为$y_i(\boldsymbol\omega^\mathrm{T}\boldsymbol x_i+b)$=1，这些最近的样本点被称为支持向量。则支持向量到超平面的几何间隔为：<br>$$<br>\gamma=\cfrac{1}{||\boldsymbol\omega||}<br>$$<br>所以为了最大化间隔，目标函数为：<br>$$<br>\begin{align<em>}<br>\max\limits_{\boldsymbol\omega,b}\cfrac{1}{||\boldsymbol\omega||}\\<br>s.t. y_i&amp;(\boldsymbol\omega^\mathrm{T}\boldsymbol x_i+b)&gt;=1<br>\end{align</em>}<br>$$</p>
 
       
     </div>
@@ -568,9 +574,9 @@
           
             <a href="/tags/机器学习/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
           
-            <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
-          
             <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+          
+            <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
           
             <a href="/tags/SVM/" rel="tag"><i class="fa fa-tag"></i> SVM</a>
           
@@ -599,8 +605,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/25/NoteLR/" rel="next" title="机器学习笔记之LR(逻辑回归)">
-                <i class="fa fa-chevron-left"></i> 机器学习笔记之LR(逻辑回归)
+              <a href="/2018/04/23/ThePerformanceEvaluationOfMachineLearning/" rel="next" title="机器学习性能评估指标">
+                <i class="fa fa-chevron-left"></i> 机器学习性能评估指标
               </a>
             
           </div>
@@ -609,8 +615,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/25/GenApp-and-DisApp/" rel="prev" title="生成方法与判定方法">
-                生成方法与判定方法 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/25/NoteLR/" rel="prev" title="机器学习笔记之LR(逻辑回归)">
+                机器学习笔记之LR(逻辑回归) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -665,8 +671,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -801,6 +816,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#几何间隔与函数间隔"><span class="nav-number">1.</span> <span class="nav-text">几何间隔与函数间隔</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最大化间隔"><span class="nav-number">2.</span> <span class="nav-text">最大化间隔</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
