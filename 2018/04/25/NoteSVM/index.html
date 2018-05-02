@@ -147,14 +147,14 @@
 
 
   <meta name="description" content="支持向量机是一种二分类模型，是特征空间上间隔最大化的线性分类器。这篇是关于SVM的笔记。">
-<meta name="keywords" content="机器学习,笔记,算法,SVM,支持向量机">
+<meta name="keywords" content="机器学习,算法,笔记,SVM,支持向量机">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习笔记之SVM(支持向量机)">
 <meta property="og:url" content="https://patrickstarcn.github.io/2018/04/25/NoteSVM/index.html">
 <meta property="og:site_name" content="派大星的水母">
 <meta property="og:description" content="支持向量机是一种二分类模型，是特征空间上间隔最大化的线性分类器。这篇是关于SVM的笔记。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-25T09:11:21.067Z">
+<meta property="og:updated_time" content="2018-05-02T06:46:21.732Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习笔记之SVM(支持向量机)">
 <meta name="twitter:description" content="支持向量机是一种二分类模型，是特征空间上间隔最大化的线性分类器。这篇是关于SVM的笔记。">
@@ -428,12 +428,22 @@
                 
               
 
-              <time title="创建时间：2018-04-25 11:10:55 / 修改时间：17:11:21" itemprop="dateCreated datePublished" datetime="2018-04-25T11:10:55+08:00">2018-04-25</time>
+              <time title="创建时间：2018-04-25 11:10:55" itemprop="dateCreated datePublished" datetime="2018-04-25T11:10:55+08:00">2018-04-25</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                <time title="修改时间：2018-05-02 14:46:21" itemprop="dateModified" datetime="2018-05-02T14:46:21+08:00">2018-05-02</time>
               
             
           </span>
@@ -503,6 +513,11 @@
 <li style="list-style: none"><input type="checkbox"> <strong>算法实现</strong></li>
 <li style="list-style: none"><input type="checkbox"> <strong>一些疑问</strong></li>
 </ul>
+<p>基于训练集，SVM想找到一个最优划分超平面将不同的类别分开，学习的策略是使间隔最大化（之后说明），则该超平面可以写成：<br>$$<br>\boldsymbol\omega^\mathrm{T}\boldsymbol x+b=0<br>$$<br>其中$\boldsymbol\omega$为超平面法向量决定超平面方向，$b$为位移项决定超平面与原点的距离。<br>令$f(\boldsymbol x)=\boldsymbol\omega^\mathrm{T}\boldsymbol x+b$则$f(\boldsymbol x)=0$时表示$\boldsymbol x$在超平面上，其他任意点$\boldsymbol x$到超平面的距离为：<br>$$<br>r=\cfrac{|\boldsymbol\omega^{\mathrm{T}}\boldsymbol x+b|}{||\boldsymbol\omega||}<br>$$</p>
+<div class="note info"><p>任意点到超平面距离公式证明。<br>点到平面距离公式为：<br>$$<br>d=\frac{|Ax_0+By_0+Cz_0+D|}{\sqrt{A^2+B^2+C^2}}<br>$$<br>公式中的平面方程为Ax+By+Cz+D=0，点P的坐标$(x_0,y_0,z_0)$，d为点P到平面的距离。分母为系数的2范数，分子是将点带入超平面公式后的绝对值。带入超平面参数即可。<br></p></div><br><div class="note info"><p>SVM为什么采用间隔最大化？<br><br>当训练数据线性可分时，存在无穷个分离超平面可以将两类数据正确分开。<br><br>感知机利用误分类最小策略，求得分离超平面，不过此时的解有无穷多个。<br><br>线性可分支持向量机利用间隔最大化求得最优分离超平面，这时，解是唯一的。另一方面，此时的分隔超平面所产生的分类结果是最鲁棒的，对未知实例的泛化能力最强。</p></div>
+
+
+<p>###几何间隔与函数间隔</p>
 
       
     </div>
@@ -553,9 +568,9 @@
           
             <a href="/tags/机器学习/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
           
-            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
-          
             <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+          
+            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
           
             <a href="/tags/SVM/" rel="tag"><i class="fa fa-tag"></i> SVM</a>
           
@@ -584,8 +599,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/23/ThePerformanceEvaluationOfMachineLearning/" rel="next" title="机器学习性能评估指标">
-                <i class="fa fa-chevron-left"></i> 机器学习性能评估指标
+              <a href="/2018/04/25/NoteLR/" rel="next" title="机器学习笔记之LR(逻辑回归)">
+                <i class="fa fa-chevron-left"></i> 机器学习笔记之LR(逻辑回归)
               </a>
             
           </div>
@@ -594,8 +609,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/25/NoteLR/" rel="prev" title="机器学习笔记之LR(逻辑回归)">
-                机器学习笔记之LR(逻辑回归) <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/25/GenApp-and-DisApp/" rel="prev" title="生成方法与判定方法">
+                生成方法与判定方法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
