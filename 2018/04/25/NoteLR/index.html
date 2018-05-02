@@ -147,14 +147,14 @@
 
 
   <meta name="description" content="逻辑回归是一个回归函数，但是应用在分类问题上，可以对事件发生的概率进行预测。">
-<meta name="keywords" content="机器学习,笔记,算法,LR,逻辑回归">
+<meta name="keywords" content="机器学习,算法,笔记,LR,逻辑回归">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习笔记之LR(逻辑回归)">
 <meta property="og:url" content="https://patrickstarcn.github.io/2018/04/25/NoteLR/index.html">
 <meta property="og:site_name" content="派大星的水母">
 <meta property="og:description" content="逻辑回归是一个回归函数，但是应用在分类问题上，可以对事件发生的概率进行预测。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-26T06:54:23.400Z">
+<meta property="og:updated_time" content="2018-05-02T03:03:50.746Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习笔记之LR(逻辑回归)">
 <meta name="twitter:description" content="逻辑回归是一个回归函数，但是应用在分类问题上，可以对事件发生的概率进行预测。">
@@ -443,7 +443,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                <time title="修改时间：2018-04-26 14:54:23" itemprop="dateModified" datetime="2018-04-26T14:54:23+08:00">2018-04-26</time>
+                <time title="修改时间：2018-05-02 11:03:50" itemprop="dateModified" datetime="2018-05-02T11:03:50+08:00">2018-05-02</time>
               
             
           </span>
@@ -504,15 +504,35 @@
       
 
       
-        <p>逻辑回归是一个回归函数，但是应用在分类问题上，可以对事件发生的概率进行预测。<br><a id="more"></a></p>
-<h3 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h3><p>线性回归公式：<br>$$f(x_i)=\omega x_i+b$$<br>目的是使$f(x_i)$尽可能的靠近$y_i$(实际值).</p>
-<p>求解$\omega$和$b$一般采均方误差最小化，这种方法又被称为“最小二乘法”，即找到一条直线使所有点到直线的欧氏距离最小，即</p>
-<p>$$<br>(\omega^<em>,b^</em>) = \mathop{\arg\min}\limits_{(\omega,b)}\sum_{i=1}^m{(f(x_i)-u_i)^2}= \mathop{\arg\min}\limits_{(\omega,b)}\sum_{i=1}^m{(y_i-\omega x_i-b)^2}<br>$$</p>
-<p>求解$\omega$和$b$，将上式分别对$\omega$和$b$求导有：</p>
-<p>$$<br>\omega =\frac{\sum\limits_{i=1}^m{y_i(x_i-\bar x)}}{\sum\limits_{i=1}^m{x_i^2-\frac1m\bigg(\sum\limits_{i=1}^m{x_i}\bigg)^2}}<br>$$<br>$$<br>b=\frac1m\sum_{i=1}^m(y_i-\omega x_i)<br>$$</p>
-<p>上述是一元线性回归的情况.对于多元线性回归则有：</p>
-<p>$$f(\boldsymbol x_i)=\boldsymbol \omega^ \mathrm{T}\boldsymbol x_i+b$$<br>使$f(\boldsymbol x_i)$尽可能的靠近$y_i$(实际值)</p>
+        <p>逻辑回归是一个回归函数，但是应用在分类问题上，可以对事件发生的概率进行预测。<br><a id="more"></a><br>Todo Lost：</p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> 多元线性回归参数估计推导</li>
+<li style="list-style: none"><input type="checkbox"> 为什么LR选择<code>Sigmoid</code>函数？</li>
+<li style="list-style: none"><input type="checkbox"> 梯度下降法的向量化？</li>
+</ul>
+<h2 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h2><p>线性回归公式：<br>$$f(x_i)=\omega x_i+b$$<br>目的是使$f(x_i)$尽可能的靠近$y_i$(实际值).</p>
+<p>求解$\omega$和$b$一般采均方误差最小化，这种方法又被称为“最小二乘法”，即找到一条直线使所有点到直线的欧氏距离最小，即最小化<code>Cost Function</code>:</p>
+<div class="note info"><p>最小二乘法的目标：求误差的最小平方和，对应有两种：线性和非线性。线性最小二乘的解是closed-form，而非线性最小二乘没有closed-form，通常用迭代法求解。<br></p></div>
 
+<p>$$<br>\begin{array}<br>\left(\omega^*,b^*)<br>&amp;=&amp; \mathop{\arg\min}\limits_{(\omega,b)}\sum_{i=1}^m{(f(x_i)-u_i)^2}\\<br>&amp;=&amp; \mathop{\arg\min}\limits_{(\omega,b)}\sum_{i=1}^m{(y_i-\omega x_i-b)^2}<br>\end{array}<br>$$</p>
+<p>求解$\omega$和$b$，将上式分别对$\omega$和$b$求导有(即求偏导)：</p>
+<p>$$<br>\omega =\cfrac{\sum\limits_{i=1}^m{y_i(x_i-\bar x)}}{\sum\limits_{i=1}^m{x_i^2-\cfrac1m\bigg(\sum\limits_{i=1}^m{x_i}\bigg)^2}}<br>$$<br>$$<br>b=\cfrac1m\sum_{i=1}^m(y_i-\omega x_i)<br>$$</p>
+<p>上述是一元线性回归的情况.对于多元线性回归则有：</p>
+<p>$$<br>f(\boldsymbol x_i)=\boldsymbol \omega^ \mathrm{T}\boldsymbol x_i+b$$<br>或者写作<br>$$<br>    h_\theta(\boldsymbol x_i)=f(\theta^{\mathrm T}\boldsymbol  x_i)=\cfrac1{1+\mathrm e^{-\theta^{\mathrm T}\boldsymbol x_i}}<br>$$<br>使$f(\boldsymbol x_i)$尽可能的靠近$y_i$(实际值）</p>
+<div class="note danger"><p>多元线性回归参数待补完</p></div>
+
+<h2 id="Logistic-Regression（对数几率回归，逻辑斯蒂回归）"><a href="#Logistic-Regression（对数几率回归，逻辑斯蒂回归）" class="headerlink" title="Logistic Regression（对数几率回归，逻辑斯蒂回归）"></a>Logistic Regression（对数几率回归，逻辑斯蒂回归）</h2><h3 id="LR概念"><a href="#LR概念" class="headerlink" title="LR概念"></a>LR概念</h3><p>LR的思想是将线性回归输出的连续值$\left(-\infty,+\infty \right)$映射到（0,1）的一个概率值，从而能够根据阈值来进行分类。<code>Sigmoid</code>函数就正好满足需求，他的定义如下：</p>
+<div class="note info"><p><code>Sigmoid</code>函数是一个任意阶可导凸函数。</p></div><br>$$y=\cfrac{1}{1+\mathrm{e}^{-z}}$$<br><div class="note warning"><p>为什么选择<code>Sigmoid</code>函数？？？？？？</p></div>
+
+<p>则把线性回归的输出带入<code>Sigmoid</code>函数则有：<br>$$\hat y=\cfrac{1}{1+\mathrm{e}^{-(\boldsymbol \omega^ \mathrm{T}\boldsymbol x_i+b)}}$$</p>
+<h3 id="LR参数估计"><a href="#LR参数估计" class="headerlink" title="LR参数估计"></a>LR参数估计</h3><p>两种求解LR参数的方法，极大似然估计和梯度下降法。<br>首先是LR的<code>Cost function</code>,如果使用和线性回归一样的损失函数会得到一个非凸函数，不利于后续的求解（比如用梯度下降法得到的就不一定是最优解）。LR的损失函数定义是($\hat y$为预测值，$y$为实际值)：<br>$$<br>\begin{array}<br>\\J(\boldsymbol \omega,b)<br>&amp;=&amp;\cfrac1m\sum_{i=1}^{m}L\left({\hat y_i}-y_i\right)\\<br>&amp;=&amp;-\cfrac{1}{m}\sum_{i+1}^{m}[<br>y_i\log(\hat y_i)+(1-y_i)log(1-\log(\hat y_i))]<br>\end{array}<br>$$</p>
+<div class="note info"><p> 关于<code>LR</code>的<code>Cost Function</code>我的理解:<br>首先是合理性上，从公式看当$y^{(i)}=1$时，则损失函数可以简化为$J(\omega,b)=-\log({\hat y^{(i)}})$，则当$\hat y^{(i)}\to0$时，$J\to\infty$,即Cost趋近于无穷。当$\hat y^{(i)}\to1$时，$J\to 0$,即Cost趋近于0.<br>$y^{(i)}=0$时，同理。所以这个<code>Cost Function</code>从概念上是符合我们的要求的。<br><br>推导：<br>将$y$视作是样本为正例的概率，则$1-y$是反例的概率,即：<br>$$<br>\begin{array}<br>\\P(y=1|\boldsymbol x)=\hat y \\<br>P(y=0|\boldsymbol x)=1-\hat y<br>\end{array}<br>$$<br>结合上述二式则有：<br>$$<br>P(y|\boldsymbol x;\boldsymbol\omega,b)=\hat y^y(1-\hat y)^{(1-y)}<br>$$<br>有了条件概率公式我们则可以用极大似然估计求解参数，取$P(y|\boldsymbol x;\boldsymbol\omega,b)$在整个训练集上的似然函数有：<br>$$<br>L(\boldsymbol \omega,b)=\prod_{i=1}^{m}{\left[(\hat y_i)^{y_i}(1-\hat y_i)^{(1-y_i)}\right]}<br>$$<br>对似然函数取对数有：<br>$$<br>l(\boldsymbol\omega,b )=\mathrm{log}L(\boldsymbol \omega,b)=\sum_{i=1}^{m}{[y_i\mathrm{log}(\hat y _i)+(1-y_i)\mathrm{log}(1-\hat y_i)]}<br>$$<br>极大似然估计就是要求得使$l(\boldsymbol \omega,b)$最大时的$\boldsymbol\omega$和$b$的值，这里可以用极大似然估计本身的解法或者梯度上升法解决。<br>而<code>cost function</code>值越小越好，所以Andrew Ng的课件里在$l(\boldsymbol \omega,b)$前乘了个系数$-\cfrac1m$当做最终的<code>cost fucntion</code>：<br>$$<br>J(\boldsymbol \omega,b)=-\cfrac1ml(\boldsymbol\omega,b )<br>$$<br>这样一来求使<code>cost fucntion</code>最小的$（\boldsymbol\omega,b）$就等于求解在给定样本情况下极大似然估计。<br></p></div>
+
+<h4 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h4><div class="note info"><p>最最开始的时候没搞清楚梯度下降法和最小二乘法的区别，梯度下降法是求解非线性最小二乘法（没有闭式解）的方法之一。<br></p></div>
+
+<p>为方便公式书写令$\boldsymbol\theta=(\boldsymbol\omega,b)$,则对$\boldsymbol\theta$的第$j$个属性按照梯度下降法更新则有：</p>
+<p><div class="note danger"><p>这部分公式中的有的粗体用错了，之后有时间修正!!!!</p></div><br>$$<br>\theta_j=\theta_j-\alpha\cfrac{\partial J(\boldsymbol\theta)}{\partial\theta_j}<br>$$<br>具体梯度下降法过程推导如下：<br>$$<br>\begin{array}<br>\\\cfrac{\partial J(\boldsymbol\theta)}{\partial\theta_j}&amp;=&amp;-\cfrac{\partial }{\theta_j}\cfrac1m\sum_{i=1}^m{[y_i\mathrm log(h_{\theta}(\boldsymbol x_i))+(1-y_i)\mathrm log(1-h_\theta(\boldsymbol x_i))]}\\<br>&amp;=&amp;-\cfrac1m\sum_{i=1}^m{\left[y_i\cfrac{1}{h_\theta(\boldsymbol x_i)}\cfrac{\partial}{\partial\theta_j}h_\theta(\boldsymbol x_i)-(1-y_i)\cfrac1{1-h_\theta(\boldsymbol x_i)}\cfrac{\partial}{\partial\theta_j}{h_\theta(\boldsymbol x_i)}\right]}\\<br>&amp;=&amp;-\cfrac1m\sum_{i=1}^m{\left[y_i\cfrac{1}{h_\theta(\boldsymbol x_i)}-(1-y_i)\cfrac1{1-h_\theta(\boldsymbol x_i)}\right]\cfrac{\partial}{\partial\theta_j}g(\theta^{\mathrm T}\boldsymbol x_i)}<br>\end{array}<br>$$<br>而<br>$$<br>\begin{array}<br>\\\cfrac{\partial}{\partial\theta_j}g(\theta^{\mathrm T}\boldsymbol x_i)&amp;=&amp;\cfrac{\partial}{\partial\theta_j}\cfrac{1}{1+\mathrm{e}^{-\theta^{\mathrm T}\boldsymbol x_i}}\\<br>&amp;=&amp;\cfrac{\mathrm e^{-\theta^\mathrm T\boldsymbol x_i}}{(1+\mathrm e^{-\theta^\mathrm T\boldsymbol x_i})^2}\cfrac{\partial}{\partial\theta_j}\theta^{\mathrm T}\boldsymbol x_i\\<br>&amp;=&amp;\cfrac{1}{1+\mathrm{e}^{-\theta^{\mathrm T}\boldsymbol x_i}}\cfrac{1+\mathrm{e}^{-\theta^{\mathrm T}\boldsymbol x_i}-1}{1+\mathrm{e}^{-\theta^{\mathrm T}\boldsymbol x_i}}\cfrac{\partial}{\partial\theta_j}\theta^{\mathrm T}\boldsymbol x_i\\<br>&amp;=&amp;g(\theta^{\mathrm T}\boldsymbol x_i)(1-g(\theta^{\mathrm T}\boldsymbol x_i))x_{i,j}<br>\end{array}<br>$$<br>其中$x_{i,j}$表示第i个样本中的第j个属性,且$h_\theta(\boldsymbol x_i)=g(\theta^{\mathrm T}\boldsymbol  x_i)$所以：<br>$$<br>\begin{array}<br>\\\cfrac{\partial J(\boldsymbol\theta)}{\partial\theta_j}&amp;=&amp;-\cfrac1m\sum_{i=1}^m{\left[y_i\cfrac{1}{h_\theta(\boldsymbol x_i)}-(1-y_i)\cfrac1{1-h_\theta(\boldsymbol x_i)}\right]}g(\theta^{\mathrm T}\boldsymbol x_i)(1-g(\theta^{\mathrm T}\boldsymbol x_i))x_{i,j}\\<br>&amp;=&amp;-\cfrac1m\sum_{i=1}^m{\left[y_i(1-g(\theta^{\mathrm T}\boldsymbol x_i))-(1-y_i)g(\theta^{\mathrm T}\boldsymbol x_i)\right]}x_{i,j}\\<br>&amp;=&amp;-\cfrac1m\sum_{i=1}^m{\left[y_i-g(\theta^{\mathrm T}\boldsymbol x_i)\right]}x_{i,j}\\&amp;=&amp; \cfrac1m\sum_{i=1}^m{\left[h_\theta(\boldsymbol x_i)-y_i\right]}x_{i,j}<br>\end{array}<br>$$<br>所以$\theta_j$的更新公式可以写作：<br>$$<br>\theta_j=\theta_j-\alpha\cfrac1m\sum_{i=1}^m{\left[h_\theta(\boldsymbol x_i)-y_i\right]}x_{i,j}<br>$$</p>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3>
       
     </div>
 
@@ -562,9 +582,9 @@
           
             <a href="/tags/机器学习/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
           
-            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
-          
             <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+          
+            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
           
             <a href="/tags/LR/" rel="tag"><i class="fa fa-tag"></i> LR</a>
           
@@ -814,7 +834,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性回归"><span class="nav-number">1.</span> <span class="nav-text">线性回归</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性回归"><span class="nav-number">1.</span> <span class="nav-text">线性回归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Logistic-Regression（对数几率回归，逻辑斯蒂回归）"><span class="nav-number">2.</span> <span class="nav-text">Logistic Regression（对数几率回归，逻辑斯蒂回归）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LR概念"><span class="nav-number">2.1.</span> <span class="nav-text">LR概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LR参数估计"><span class="nav-number">2.2.</span> <span class="nav-text">LR参数估计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度下降法"><span class="nav-number">2.2.1.</span> <span class="nav-text">梯度下降法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文献"><span class="nav-number">2.3.</span> <span class="nav-text">参考文献</span></a></li></ol></li></ol></div>
             
 
           </div>
