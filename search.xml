@@ -1,6 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[knn(k-nearest neighbor)]]></title>
+    <url>%2F2018%2F05%2F20%2Fknn%2F</url>
+    <content type="text"><![CDATA[这节写knn,knn是一种基本的分类与回归方法。 knn的思想是，给一个指定训练集，新来一个输入就在训练集中找到与该输入最临近的k个点，再通过投票法看这k个点属于哪一个分类的多就把该点分到这个类别中。 knn的三个基本要素是，k值的选择，距离度量和分类决策规则。 KNN中的K值选取对分类的结果影响至关重要，K值选取的太小，模型太复杂。K值选取的太大，导致分类模糊。那么K值到底怎么选取呢？有人用Cross Validation，有人用贝叶斯，还有的用bootstrap。 距离度量KNN一般使用欧式距离。 KNN一般采取多数表决的决策规则。 算法基本步骤： 计算待分类点与已知类别的点之间的距离 按照距离递增次序排序 选取与待分类点距离最小的k个点 确定前k个点所在类别的出现次数 返回前k个点出现次数最高的类别作为待分类点的预测分类knn的缺陷： 该算法在分类时有个重要的不足是，当样本不平衡时，即：一个类的样本容量很大，而其他类样本数量很小时，很有可能导致当输入一个未知样本时，该样本的K个邻居中大数量类的样本占多数。 但是这类样本并不接近目标样本，而数量小的这类样本很靠近目标样本。这个时候，我们有理由认为该位置样本属于数量小的样本所属的一类，但是，KNN却不关心这个问题，它只关心哪类样本的数量最多，而不去把距离远近考虑在内，因此，我们可以采用权值的方法来改进。和该样本距离小的邻居权值大，和该样本距离大的邻居权值则相对较小，由此，将距离远近的因素也考虑在内，避免因一个样本过大导致误判的情况。 从算法实现的过程可以发现，knn需要存储全部的训练样本。 计算量较大，因为对每一个待分类的样本都要计算它到全体已知样本的距离，才能求得它的K个最近邻点。 KNN算法的改进方法之一是分组快速搜索近邻法。其基本思想是：将样本集按近邻关系分解成组，给出每组质心的位置，以质心作为代表点，和未知样本计算距离，选出距离最近的一个或若干个组，再在组的范围内应用一般的KNN算法。由于并不是将未知样本与所有样本计算距离，故该改进算法可以减少计算量，但并不能减少存储量。 KNN的实现：kd tree实现knn最简单的方法是线性扫描，计算当前点与所有训练点之间的距离，但是当训练集大时这种方法耗时效率低，这时可以采取kd tree来减少计算。]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>笔记</tag>
+        <tag>算法</tag>
+        <tag>KNN</tag>
+        <tag>kd tree</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[天池阿里妈妈广告转化率预测比赛总结]]></title>
+    <url>%2F2018%2F05%2F19%2F%E5%A4%A9%E6%B1%A0%E9%98%BF%E9%87%8C%E5%A6%88%E5%A6%88%E5%B9%BF%E5%91%8A%E8%BD%AC%E5%8C%96%E7%8E%87%E9%A2%84%E6%B5%8B%E6%AF%94%E8%B5%9B%E6%80%BB%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[第一次参加比赛，进了复赛由于小破本跑不动复赛数据集所以没有调整特征及模型，只跑了一次提交，最后203/5204，成绩作为第一次参赛还算不错，总结一下这次比赛遇到的问题和学到的东西。 ##]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>算法</tag>
+        <tag>比赛</tag>
+        <tag>总结</tag>
+        <tag>xgboost</tag>
+        <tag>LightGbm</tag>
+        <tag>stacking</tag>
+        <tag>特征工程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[机器学习笔记之SVM3(支持向量机)]]></title>
+    <url>%2F2018%2F05%2F17%2F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BSVM3(%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA)%2F</url>
+    <content type="text"><![CDATA[这一节写SMO算法。 序列最小最优化算法（SMO）在之前的两节我们要解出如下问题:\begin{align}&amp;\max\limits_{\alpha_i}-\cfrac{1}{2}\sum_{i=1}^m\sum_{j=1}^m{\alpha_iy_i\alpha_jy_j(\boldsymbol x_j\cdot\boldsymbol x_i)}+\sum_{i=1}^m\alpha_i\\&amp;\begin{array}\\s.t.&amp;\sum_{i=1}^{m}{\alpha_iy_i}=0\\&amp;\alpha_i\geq0,i=1,2,…,m\\\end{array}\end{align}这个问题的规模正比于训练样本数,要求解m个参数$\alpha_1…\alpha_m$,需要高效的算法求解,所以有SMO。 SMO的基本思路是把原始求解N个参数二次规划问题分解成很多个子二次规划问题分别求解，每个子问题只需要求解2个参数,每次启发式选择两个变量进行优化，不断循环，直到达到函数最优值。]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>笔记</tag>
+        <tag>算法</tag>
+        <tag>SVM</tag>
+        <tag>支持向量机</tag>
+        <tag>SMO</tag>
+        <tag>序列最小最优化算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[朴素贝叶斯(naive Bayes)]]></title>
+    <url>%2F2018%2F05%2F13%2F%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%2F</url>
+    <content type="text"><![CDATA[朴素贝叶斯是一种基于贝叶斯定理和特征条件独立假设的分类算法。。 朴素贝叶斯的朴素二字来源于它的假设:特征条件独立分布。这是一个比较强的假设。 基本概念贝叶斯定理的公式如下:\begin{align}P(Y|\boldsymbol X)=\cfrac{P(\boldsymbol X|Y)P(Y)}{P(\boldsymbol X)}\label{eq:(1)}\end{align} 贝叶斯公式可以由条件概率公式推到出来。贝叶斯定理也可以被写成如下方式:\begin{align}后验概率=\cfrac{条件概率*先验概率}{现象概率}\end{align}为了更好的理解:\begin{align}P(给定天上有乌云，下雨的概率)=\cfrac{P(给定天上下雨，有乌云的概率)P(下雨的概率)}{P(有乌云的概率)}\end{align}我们可以看到，如果我们想要在给定现象下，预测某种结果的概率，我们必须知道：1、在给定这种结果下，出现这种现象的概率。2、出现这种结果的概率。3、出现这种现象的概率。在朴素贝叶斯分类里贝叶斯定理可以写作:\begin{align}P(类别|特征)=\cfrac{P(特征|类别)P(类别)}{P(特征)}\end{align}朴素贝叶斯的目标是分别计算在给定特征下各类别的概率，即$P(Y=c_j|\boldsymbol X)$并选出最大概率时的类别作为当前特征对应的类别。在特征条件独立分布的假设下，$\eqref{eq:(1)}$式可以被重写为:\begin{align}P(Y|\boldsymbol X)=\cfrac{P(\boldsymbol X|Y)P(Y)}{P(\boldsymbol X)}=\cfrac{P(Y)}{P(\boldsymbol X)}\prod_{i=1}^mP(X_i|Y)\end{align}其中$P(\boldsymbol X)$对于指定的样本是一个常量，所以贝叶斯分类模型可以写成:\begin{align}y=\arg\max\limits_YP(Y)\prod_{i=1}^mP(X_i|Y)\end{align}即用已知的类变量$Y$的所有可能的值计算概率，并选择输出概率是最大的结果,从这里也可以看出来这是个生成模型。在独立同分布的情况下有:\begin{align}&amp;P(\boldsymbol X|Y)=\prod_{i=1}^mP(X_i|Y)\\&amp;P(\boldsymbol X)=\prod_{i=1}^mP(X_i)\end{align} 朴素贝叶斯分类中实际就是求后验概率最大化的类,这等价于期望风险最小化。朴素贝叶斯的参数估计一般用极大似然估计。 拉普拉斯平滑在分类模型中如果某测试集特征在训练的时候从来没出现过，会导致后验概率为0，这时候需要用拉普拉斯平滑(Laplace smoothing)进行修正。]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>笔记</tag>
+        <tag>算法</tag>
+        <tag>朴素贝叶斯</tag>
+        <tag>拉普拉斯平滑</tag>
+        <tag>极大似然估计</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[数学基础之极大似然估计（MLE）]]></title>
+    <url>%2F2018%2F04%2F25%2FMLE%2F</url>
+    <content type="text"><![CDATA[“概率论只不过是把常识用数学公式表达了出来” —拉普拉斯 极大似然估计是机器学习算法常用的的一种参数估计方法，这篇文章是MLE和相关概念的笔记。 一些概念：先验概率，事情还没有发生，要求这件事情发生的可能性的大小，是根据以往经验和分析得到的概率。后验概率，事情已经发生，要求这件事情发生的原因是由某个因素引起的可能性的大小。条件概率， 贝叶斯公式条件概率公式：$$P(A|B)=\frac{P(AB)}{P(B)}$$贝叶斯公式可以由条件概率公式推到出来：$$P(A_i|B)=\frac{P(A_iB)}{P(B)}=\frac{P(B|A_i)P(A_i)}{P(B)}$$贝叶斯公式中各部分含义： $P(A_i)$,$A_i$的先验概率 $P(B)$,$B$的先验概率 $P(A_i|B)$, 直观上理解，贝叶斯公式描述的是在$B$发生的情况下，$A_i$的概率 极大似然估计（MLE）]]></content>
+      <categories>
+        <category>数学基础</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>数学</tag>
+        <tag>笔记</tag>
+        <tag>概率学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[生成方法与判定方法]]></title>
     <url>%2F2018%2F04%2F25%2FGenApp-and-DisApp%2F</url>
     <content type="text"><![CDATA[监督学习方法分生成方法与判定方法，这篇文章是关于二者理解的笔记。 李航老师的《《统计学习方法》P18:生成方法由数据学习联合概率分布$P(X,Y)$,然后再求条件概率分布作为预测模型。典型的生成模型有：朴素贝叶斯，隐马尔科夫模型。判别方法有数据直接学习决策函数$f(X)$或者条件概率分布$P(XY)$作为预测模型。典型的判定模型有：KNN，决策树，LR，SVM等。 生成方法的特点：生成方法可以还原联合概率分布，而判别方法则不能；生成方法的学习收敛速度更快，即当样本容量增加的时候，学习的模型可以更快的收敛于真实的模型；当存在隐变量时，仍可以用生成方法学习，此时判别方法就不能用。 判别方法的特点：判别方法直接学习的是条件概率或者决策函数，直接面对预测，往往学习的准确率更高；由于直接学习或者，可以对数据进行各种程度上的抽象、定义特征并使用特征，因此可以简化学习问题。 生成方法对于历史数据有多少个类别就要生成多少个模型，然后用新数据特征去匹配这些模型，取最符合的。 判别方法根据历史数据直接生成一个判别式，新数据进来直接就可以判断他属于哪一个类别。]]></content>
@@ -14,32 +94,21 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[数学基础之极大似然估计（MLE）]]></title>
-    <url>%2F2018%2F04%2F25%2FMLE%2F</url>
-    <content type="text"><![CDATA[“概率论只不过是把常识用数学公式表达了出来” —拉普拉斯 极大似然估计是机器学习算法常用的的一种参数估计方法，这篇文章是MLE和相关概念的笔记。 一些概念：先验概率，事情还没有发生，要求这件事情发生的可能性的大小，是根据以往经验和分析得到的概率。后验概率，事情已经发生，要求这件事情发生的原因是由某个因素引起的可能性的大小。条件概率， 贝叶斯公式条件概率公式：$$P(A|B)=\frac{P(AB)}{P(B)}$$贝叶斯公式可以由条件概率公式推到出来：$$P(A_i|B)=\frac{P(A_iB)}{P(B)}=\frac{P(B|A_i)P(A_i)}{P(B)}$$贝叶斯公式中各部分含义： $P(A_i)$,$A_i$的先验概率 $P(B)$,$B$的先验概率 $P(A_i|B)$, 直观上理解，贝叶斯公式描述的是在$B$发生的情况下，$A_i$的概率 极大似然估计（MLE）]]></content>
-      <categories>
-        <category>数学基础</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-        <tag>笔记</tag>
-        <tag>数学</tag>
-        <tag>概率学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[机器学习笔记之LR(逻辑回归)]]></title>
-    <url>%2F2018%2F04%2F25%2FNoteLR%2F</url>
-    <content type="text"><![CDATA[逻辑回归是一个回归函数，但是应用在分类问题上，可以对事件发生的概率进行预测。Todo Lost： 多元线性回归参数估计推导 为什么LR选择Sigmoid函数？ 梯度下降法的向量化？ 线性回归线性回归公式：$$f(x_i)=\omega x_i+b$$目的是使$f(x_i)$尽可能的靠近$y_i$(实际值). 求解$\omega$和$b$一般采均方误差最小化，这种方法又被称为“最小二乘法”，即找到一条直线使所有点到直线的欧氏距离最小，即最小化Cost Function: 最小二乘法的目标：求误差的最小平方和，对应有两种：线性和非线性。线性最小二乘的解是closed-form，而非线性最小二乘没有closed-form，通常用迭代法求解。 $$\begin{array}\left(\omega^*,b^*)&amp;=&amp; \mathop{\arg\min}\limits_{(\omega,b)}\sum_{i=1}^m{(f(x_i)-u_i)^2}\\&amp;=&amp; \mathop{\arg\min}\limits_{(\omega,b)}\sum_{i=1}^m{(y_i-\omega x_i-b)^2}\end{array}$$ 求解$\omega$和$b$，将上式分别对$\omega$和$b$求导有(即求偏导)： $$\omega =\cfrac{\sum\limits_{i=1}^m{y_i(x_i-\bar x)}}{\sum\limits_{i=1}^m{x_i^2-\cfrac1m\bigg(\sum\limits_{i=1}^m{x_i}\bigg)^2}}$$$$b=\cfrac1m\sum_{i=1}^m(y_i-\omega x_i)$$ 上述是一元线性回归的情况.对于多元线性回归则有： $$f(\boldsymbol x_i)=\boldsymbol \omega^ \mathrm{T}\boldsymbol x_i+b$$或者写作$$ h_\theta(\boldsymbol x_i)=f(\theta^{\mathrm T}\boldsymbol x_i)=\cfrac1{1+\mathrm e^{-\theta^{\mathrm T}\boldsymbol x_i}}$$使$f(\boldsymbol x_i)$尽可能的靠近$y_i$(实际值） 多元线性回归参数待补完 Logistic Regression（对数几率回归，逻辑斯蒂回归）LR概念LR的思想是将线性回归输出的连续值$\left(-\infty,+\infty \right)$映射到（0,1）的一个概率值，从而能够根据阈值来进行分类。Sigmoid函数就正好满足需求，他的定义如下： Sigmoid函数是一个任意阶可导凸函数。$$y=\cfrac{1}{1+\mathrm{e}^{-z}}$$为什么选择Sigmoid函数？？？？？？ 则把线性回归的输出带入Sigmoid函数则有：$$\hat y=\cfrac{1}{1+\mathrm{e}^{-(\boldsymbol \omega^ \mathrm{T}\boldsymbol x_i+b)}}$$ LR参数估计两种求解LR参数的方法，极大似然估计和梯度下降法。首先是LR的Cost function,如果使用和线性回归一样的损失函数会得到一个非凸函数，不利于后续的求解（比如用梯度下降法得到的就不一定是最优解）。LR的损失函数定义是($\hat y$为预测值，$y$为实际值)：$$\begin{array}\\J(\boldsymbol \omega,b)&amp;=&amp;\cfrac1m\sum_{i=1}^{m}L\left({\hat y_i}-y_i\right)\\&amp;=&amp;-\cfrac{1}{m}\sum_{i+1}^{m}[y_i\log(\hat y_i)+(1-y_i)log(1-\log(\hat y_i))]\end{array}$$ 关于LR的Cost Function我的理解:首先是合理性上，从公式看当$y^{(i)}=1$时，则损失函数可以简化为$J(\omega,b)=-\log({\hat y^{(i)}})$，则当$\hat y^{(i)}\to0$时，$J\to\infty$,即Cost趋近于无穷。当$\hat y^{(i)}\to1$时，$J\to 0$,即Cost趋近于0.$y^{(i)}=0$时，同理。所以这个Cost Function从概念上是符合我们的要求的。推导：将$y$视作是样本为正例的概率，则$1-y$是反例的概率,即：$$\begin{array}\\P(y=1|\boldsymbol x)=\hat y \\P(y=0|\boldsymbol x)=1-\hat y\end{array}$$结合上述二式则有：$$P(y|\boldsymbol x;\boldsymbol\omega,b)=\hat y^y(1-\hat y)^{(1-y)}$$有了条件概率公式我们则可以用极大似然估计求解参数，取$P(y|\boldsymbol x;\boldsymbol\omega,b)$在整个训练集上的似然函数有：$$L(\boldsymbol \omega,b)=\prod_{i=1}^{m}{\left[(\hat y_i)^{y_i}(1-\hat y_i)^{(1-y_i)}\right]}$$对似然函数取对数有：$$l(\boldsymbol\omega,b )=\mathrm{log}L(\boldsymbol \omega,b)=\sum_{i=1}^{m}{[y_i\mathrm{log}(\hat y _i)+(1-y_i)\mathrm{log}(1-\hat y_i)]}$$极大似然估计就是要求得使$l(\boldsymbol \omega,b)$最大时的$\boldsymbol\omega$和$b$的值，这里可以用极大似然估计本身的解法或者梯度上升法解决。而cost function值越小越好，所以Andrew Ng的课件里在$l(\boldsymbol \omega,b)$前乘了个系数$-\cfrac1m$当做最终的cost fucntion：$$J(\boldsymbol \omega,b)=-\cfrac1ml(\boldsymbol\omega,b )$$这样一来求使cost fucntion最小的$（\boldsymbol\omega,b）$就等于求解在给定样本情况下极大似然估计。 梯度下降法最最开始的时候没搞清楚梯度下降法和最小二乘法的区别，梯度下降法是求解非线性最小二乘法（没有闭式解）的方法之一。 为方便公式书写令$\boldsymbol\theta=(\boldsymbol\omega,b)$,则对$\boldsymbol\theta$的第$j$个属性按照梯度下降法更新则有： 这部分公式中的有的粗体用错了，之后有时间修正!!!!$$\theta_j=\theta_j-\alpha\cfrac{\partial J(\boldsymbol\theta)}{\partial\theta_j}$$具体梯度下降法过程推导如下：$$\begin{array}\\\cfrac{\partial J(\boldsymbol\theta)}{\partial\theta_j}&amp;=&amp;-\cfrac{\partial }{\theta_j}\cfrac1m\sum_{i=1}^m{[y_i\mathrm log(h_{\theta}(\boldsymbol x_i))+(1-y_i)\mathrm log(1-h_\theta(\boldsymbol x_i))]}\\&amp;=&amp;-\cfrac1m\sum_{i=1}^m{\left[y_i\cfrac{1}{h_\theta(\boldsymbol x_i)}\cfrac{\partial}{\partial\theta_j}h_\theta(\boldsymbol x_i)-(1-y_i)\cfrac1{1-h_\theta(\boldsymbol x_i)}\cfrac{\partial}{\partial\theta_j}{h_\theta(\boldsymbol x_i)}\right]}\\&amp;=&amp;-\cfrac1m\sum_{i=1}^m{\left[y_i\cfrac{1}{h_\theta(\boldsymbol x_i)}-(1-y_i)\cfrac1{1-h_\theta(\boldsymbol x_i)}\right]\cfrac{\partial}{\partial\theta_j}g(\theta^{\mathrm T}\boldsymbol x_i)}\end{array}$$而$$\begin{array}\\\cfrac{\partial}{\partial\theta_j}g(\theta^{\mathrm T}\boldsymbol x_i)&amp;=&amp;\cfrac{\partial}{\partial\theta_j}\cfrac{1}{1+\mathrm{e}^{-\theta^{\mathrm T}\boldsymbol x_i}}\\&amp;=&amp;\cfrac{\mathrm e^{-\theta^\mathrm T\boldsymbol x_i}}{(1+\mathrm e^{-\theta^\mathrm T\boldsymbol x_i})^2}\cfrac{\partial}{\partial\theta_j}\theta^{\mathrm T}\boldsymbol x_i\\&amp;=&amp;\cfrac{1}{1+\mathrm{e}^{-\theta^{\mathrm T}\boldsymbol x_i}}\cfrac{1+\mathrm{e}^{-\theta^{\mathrm T}\boldsymbol x_i}-1}{1+\mathrm{e}^{-\theta^{\mathrm T}\boldsymbol x_i}}\cfrac{\partial}{\partial\theta_j}\theta^{\mathrm T}\boldsymbol x_i\\&amp;=&amp;g(\theta^{\mathrm T}\boldsymbol x_i)(1-g(\theta^{\mathrm T}\boldsymbol x_i))x_{i,j}\end{array}$$其中$x_{i,j}$表示第i个样本中的第j个属性,且$h_\theta(\boldsymbol x_i)=g(\theta^{\mathrm T}\boldsymbol x_i)$所以：$$\begin{array}\\\cfrac{\partial J(\boldsymbol\theta)}{\partial\theta_j}&amp;=&amp;-\cfrac1m\sum_{i=1}^m{\left[y_i\cfrac{1}{h_\theta(\boldsymbol x_i)}-(1-y_i)\cfrac1{1-h_\theta(\boldsymbol x_i)}\right]}g(\theta^{\mathrm T}\boldsymbol x_i)(1-g(\theta^{\mathrm T}\boldsymbol x_i))x_{i,j}\\&amp;=&amp;-\cfrac1m\sum_{i=1}^m{\left[y_i(1-g(\theta^{\mathrm T}\boldsymbol x_i))-(1-y_i)g(\theta^{\mathrm T}\boldsymbol x_i)\right]}x_{i,j}\\&amp;=&amp;-\cfrac1m\sum_{i=1}^m{\left[y_i-g(\theta^{\mathrm T}\boldsymbol x_i)\right]}x_{i,j}\\&amp;=&amp; \cfrac1m\sum_{i=1}^m{\left[h_\theta(\boldsymbol x_i)-y_i\right]}x_{i,j}\end{array}$$所以$\theta_j$的更新公式可以写作：$$\theta_j=\theta_j-\alpha\cfrac1m\sum_{i=1}^m{\left[h_\theta(\boldsymbol x_i)-y_i\right]}x_{i,j}$$ 参考文献]]></content>
+    <title><![CDATA[关于L0 L1 L2正则化]]></title>
+    <url>%2F2018%2F04%2F25%2F%E5%85%B3%E4%BA%8EL0%20L1%20L2%E6%AD%A3%E5%88%99%E5%8C%96%2F</url>
+    <content type="text"><![CDATA[在机器学习模型训练中，由于种种因素往往会出现过拟合的情况，处理的方法之一就是在原损失函数中加入正则化(即范数)项来防止过拟合，下面将一步步说明为什么正则项能够防止过拟合。 概念$0$范数，向量中非零元素的个数。 可以获得稀疏模型 较难求解 $1$范数，为绝对值之和。 是$L0$范数的最优凸近似 比$0$范数容易求解 可以获得稀疏解 $2$范数，就是通常意义上的模。 让模型参数接近于零，防止过拟合 以线性回归为例,以平方误差为损失函数，则优化目标为：\begin{align}\min\limits_{\boldsymbol w}\sum_{i=1}^{m}(y_i-\boldsymbol w^{\mathrm T}\boldsymbol x_i)^2\end{align}样本特征多，样本数少的时候，会导致过拟合，此时可以加入正则化项,以$L2$范数为例:\begin{align}\min\limits_{\boldsymbol w}\sum_{i=1}^{m}(y_i-\boldsymbol w^{\mathrm T}\boldsymbol x_i)^2+\lambda||\boldsymbol w||_2^2\end{align}其中$\lambda&gt;0$叫做正则化参数,以$L2$范数作为正则项是上式被称作岭回归(ridge regression),以$L1$范数作为正则项则叫做$LASSO$。 在过拟合的情况下,线性回归模型得到的参数的数量较多,因为模型过多拟合导致函数复杂,这时加入$L0$,$L1$范数并最小化可以限制非零参数得到个数,从而简化模型防止过拟合。 加入$L2$范数可以让参数接近于0，参数小模型简单从而防止过拟合。 参数稀疏的好处： 特征选择(Feature Selection),自动让部分系数为零,挑选出有用的特征。 可解释性,非零参数少有助于可解释性。 避免过拟合。 参数值越小代表模型越简单吗？ 为什么参数越小，说明模型越简单呢，这是因为越复杂的模型，越是会尝试对所有的样本进行拟合，甚至包括一些异常样本点，这就容易造成在较小的区间里预测值产生较大的波动，这种较大的波动也反映了在这个区间里的导数很大，而只有较大的参数值才能产生较大的导数。因此复杂的模型，其参数值会比较大。]]></content>
       <categories>
         <category>机器学习</category>
       </categories>
       <tags>
         <tag>机器学习</tag>
+        <tag>数学</tag>
         <tag>笔记</tag>
-        <tag>算法</tag>
-        <tag>LR</tag>
-        <tag>逻辑回归</tag>
+        <tag>L0</tag>
+        <tag>L1</tag>
+        <tag>L2</tag>
+        <tag>过拟合</tag>
+        <tag>范数</tag>
       </tags>
   </entry>
   <entry>
@@ -55,6 +124,38 @@
         <tag>算法</tag>
         <tag>SVM</tag>
         <tag>支持向量机</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[机器学习笔记之SVM2(支持向量机)]]></title>
+    <url>%2F2018%2F04%2F25%2F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BSVM2(%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA)%2F</url>
+    <content type="text"><![CDATA[这一节写软间隔最大化支持向量机和核技巧。 Soft SVMSVM有时候会遇到数据线性不可分的问题,线性不可分意味着某些样本点不能满足函数间隔大于等于1的约束条件,为了解决这个问题，我们使用Soft SVM,即在原来的超平面方程中加入松弛变量$\xi\geq0$允许某些样本可以在原约束条件下犯错,使函数间隔加上这个变量后大于等于1,即约束条件变为:\begin{align}y_i(\boldsymbol w^{\mathrm T}\boldsymbol x_i+b)\geq1-\xi_i\\\xi\geq0,i=1,…,m\end{align}样本中每一个变量对应一个松弛变量，此时目标函数变为(对于每一个松弛变量$\xi_i$,支付一个代价$\xi_i$):\begin{align}L(\boldsymbol w,\xi)=\cfrac{1}{2}||\boldsymbol w||^2+C\sum_{i=1}^m{\xi_i}\end{align}这里的$C$是惩罚参数,$C$越大对于误分类的惩罚越大。最小化上式则表示在最大化间隔同时使误分类的样本数目尽可能的少。 Soft SVM的原始问题可以写作:\begin{align}&amp;\min\limits_{\boldsymbol w,b,\boldsymbol\xi_i}\quad\cfrac{1}{2}||\boldsymbol w||^2+C\sum_{i=1}^m{\xi_i}\\&amp;\begin{array}\\s.t.\quad &amp;y_i(\boldsymbol w^{\mathrm T}\boldsymbol x_i+b)\geq1-\xi_i\\&amp;\xi\geq0,i=1,…,m\end{array}\end{align}上式依旧是一个凸二次规划问题，按照拉格朗日乘数法，得到拉格朗日函数为：\begin{align}L(\boldsymbol w,b,\boldsymbol\alpha,\boldsymbol\xi,\boldsymbol\mu)=&amp;\cfrac{1}{2}||\boldsymbol w||^2+C\sum_{i=1}^m{\xi_i}\\&amp;+\sum_{i=1}^m{\alpha_i(1-\xi_i-y_i(\boldsymbol w^{\mathrm T}\boldsymbol x_i+b))}-\sum_{i=1}^m\mu_i\xi_i\end{align}$\alpha_i$,$\mu_i$均为拉格朗日系数,和上节一样可以得到对偶问题为:\begin{align}\max\limits_{\alpha_i,\mu_i}\min\limits_{\boldsymbol w,b,\boldsymbol\xi}L(\boldsymbol w,b,\boldsymbol\alpha,\boldsymbol\xi,\boldsymbol\mu)\end{align} 求拉格朗日函数的偏导有:\begin{align}\boldsymbol w&amp;=\sum_{i=1}^m\alpha_iy_i\boldsymbol x_i\\0&amp;=\sum_{i=1}^m\alpha_iy_i\\C&amp;=\alpha_i+\mu_i\end{align}把上述式子带入对偶问题的函数化简:\begin{align}&amp;\max\limits_{\alpha_i}-\cfrac{1}{2}\sum_{i=1}^m\sum_{j=1}^m{\alpha_iy_i\alpha_jy_j(\boldsymbol x_j\cdot\boldsymbol x_i)}+\sum_{i=1}^m\alpha_i\\&amp;\begin{array}\\s.t.&amp;\sum_{i=1}^{m}{\alpha_iy_i}=0\\&amp;\alpha_i\geq0,i=1,2,…,m\\&amp;0\leq\alpha_i\leq C\\\end{array}\end{align}同样类似于硬间隔SVM，软间隔支持向量机也满足KKT条件,则从上式可以得到, 若$\alpha_i=0$,则这些样本对模型不会产生影响。 若$0&lt;\alpha_i&lt; C$,则有$y_if(\boldsymbol x_i)-1+\xi_i=0$,$\mu_i&gt;0$,从而有$\xi_i=0$即这些点位于最大间隔边界上,就是我们的支持向量。 若$\alpha_i=C$,则有$y_if(\boldsymbol x_i)-1+\xi_i=0$,$\mu_i=0$,此时若$0&lt;\xi_i&lt;1$,则分类正确，样本点在间隔边界和分离超平面之间。若$\xi_i=1$，则分类正确，样本点在分离超平面上。 若$\alpha_i=C$,则有$y_if(\boldsymbol x_i)-1+\xi_i=0$,$\mu_i=0$,此时若$\xi_i&gt;1$,则分类错误，样本点位于分类超平面另一边。所以最大间隔边界上的样本点可能是支持向量，也有可能是离群点。软间隔支持向量机的最终模型仍然仅与支持向量有关，保持了稀疏性。 损失函数常见的代替损失函数 hinge损失(hinge loss):$l_{hinge}(z)=max(0,1-z)$ 指数损失(exponential loss):$l_{exp}(z)$=exp(-z) 对率损失(logistic loss):$l_{log}=log(1+exp(-z))$Liner SVM用hinge损失。 核函数有时候数据在原始样本空间线性不可分,但可以将样本从原始空间映射到一个更高维的特征空间(希尔伯特空间),使样本在这个空间内线性可分。而且如果原始空间是有限维，即属性有限，那么一定存在一个高维特征空间使样本线性可分。把原始空降映射到高维空间叫做kernel trick核技巧，同时不会增加计算量。 我们假设$\phi(\boldsymbol x)$为讲原始空间的样本$\boldsymbol x$映射后的特征向量。 与之前推导一样我们可以得到对偶问题为:\begin{align}&amp;\max\limits_{\alpha_i}-\cfrac{1}{2}\sum_{i=1}^m\sum_{j=1}^m{\alpha_iy_i\alpha_jy_j\phi{(\boldsymbol x_i)}^{\mathrm T}\phi(\boldsymbol x_j)}+\sum_{i=1}^m\alpha_i\\&amp;\begin{array}\\s.t.&amp;\sum_{i=1}^{m}{\alpha_iy_i}=0\\&amp;\alpha_i\geq0,i=1,2,…,m\\\end{array}\end{align}在高维空间计算$\phi{(\boldsymbol x_i)}^{\mathrm T}\phi(\boldsymbol x_j)$通常比较困难,设计这样一个函数:\begin{align}\kappa(\boldsymbol x_i,\boldsymbol x_j)=\phi{(\boldsymbol x_i)}^{\mathrm T}\phi(\boldsymbol x_j)\end{align}即$\boldsymbol x_i$与$\boldsymbol x_j$在高维空间的内积等于他们在原始样本空间通过函数$\kappa(\boldsymbol x_i,\boldsymbol x_j)$计算的结果，这个技巧叫核技巧，这个函数就是核函数。 核技巧的思想是不显示的表示映射函数,而是直接计算核函数。这样最终求解超平面方程为:\begin{align}f(\boldsymbol x)=\sum\limits_{i=1}^m{\alpha_iy_i\kappa(\boldsymbol x_,\boldsymbol x_i)}+b\end{align}如何找到核函数？定理:只要一个堆成函数所对应的和核矩阵半正定，他就能作为核函数使用。 常用核函数 线性核 $\kappa(\boldsymbol x_i,\boldsymbol x_j)=\boldsymbol x_i^{\mathrm T}\boldsymbol x_j$ 多项式核 $\kappa(\boldsymbol x_i,\boldsymbol x_j)=(\boldsymbol x_i^{\mathrm T}\boldsymbol x_j)^d\quad d\geq1$为多项式次数 高斯核$\kappa(\boldsymbol x_i,\boldsymbol x_j)=exp\left(-\cfrac{||\boldsymbol x_i-\boldsymbol x_j||^2}{2\sigma^2}\right)\quad\sigma&gt;0$为高斯核带宽 参考文献]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>笔记</tag>
+        <tag>算法</tag>
+        <tag>SVM</tag>
+        <tag>支持向量机</tag>
+        <tag>soft SVM</tag>
+        <tag>核技巧</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[机器学习笔记之LR(逻辑回归)]]></title>
+    <url>%2F2018%2F04%2F25%2FNoteLR%2F</url>
+    <content type="text"><![CDATA[逻辑回归是一个回归函数，但是应用在分类问题上，可以对事件发生的概率进行预测。Todo Lost： 多元线性回归参数估计推导 为什么LR选择Sigmoid函数？ 梯度下降法的向量化？ 线性回归线性回归公式：$$f(x_i)=\omega x_i+b$$目的是使$f(x_i)$尽可能的靠近$y_i$(实际值). 求解$\omega$和$b$一般采均方误差最小化，这种方法又被称为“最小二乘法”，即找到一条直线使所有点到直线的欧氏距离最小，即最小化Cost Function: 最小二乘法的目标：求误差的最小平方和，对应有两种：线性和非线性。线性最小二乘的解是closed-form，而非线性最小二乘没有closed-form，通常用迭代法求解。 $$\begin{array}\left(\omega^*,b^*)&amp;=&amp; \mathop{\arg\min}\limits_{(\omega,b)}\sum_{i=1}^m{(f(x_i)-u_i)^2}\\&amp;=&amp; \mathop{\arg\min}\limits_{(\omega,b)}\sum_{i=1}^m{(y_i-\omega x_i-b)^2}\end{array}$$ 求解$\omega$和$b$，将上式分别对$\omega$和$b$求导有(即求偏导)： $$\omega =\cfrac{\sum\limits_{i=1}^m{y_i(x_i-\bar x)}}{\sum\limits_{i=1}^m{x_i^2-\cfrac1m\bigg(\sum\limits_{i=1}^m{x_i}\bigg)^2}}$$$$b=\cfrac1m\sum_{i=1}^m(y_i-\omega x_i)$$ 上述是一元线性回归的情况.对于多元线性回归则有： $$f(\boldsymbol x_i)=\boldsymbol \omega^ \mathrm{T}\boldsymbol x_i+b$$或者写作$$ h_\theta(\boldsymbol x_i)=f(\theta^{\mathrm T}\boldsymbol x_i)=\cfrac1{1+\mathrm e^{-\theta^{\mathrm T}\boldsymbol x_i}}$$使$f(\boldsymbol x_i)$尽可能的靠近$y_i$(实际值） 多元线性回归参数待补完 Logistic Regression（对数几率回归，逻辑斯蒂回归）LR概念LR的思想是将线性回归输出的连续值$\left(-\infty,+\infty \right)$映射到（0,1）的一个概率值，从而能够根据阈值来进行分类。Sigmoid函数就正好满足需求，他的定义如下： Sigmoid函数是一个任意阶可导凸函数。$$y=\cfrac{1}{1+\mathrm{e}^{-z}}$$为什么选择Sigmoid函数？？？？？？ 则把线性回归的输出带入Sigmoid函数则有：$$\hat y=\cfrac{1}{1+\mathrm{e}^{-(\boldsymbol \omega^ \mathrm{T}\boldsymbol x_i+b)}}$$ LR参数估计两种求解LR参数的方法，极大似然估计和梯度下降法。首先是LR的Cost function,如果使用和线性回归一样的损失函数会得到一个非凸函数，不利于后续的求解（比如用梯度下降法得到的就不一定是最优解）。LR的损失函数定义是($\hat y$为预测值，$y$为实际值)：$$\begin{array}\\J(\boldsymbol \omega,b)&amp;=&amp;\cfrac1m\sum_{i=1}^{m}L\left({\hat y_i}-y_i\right)\\&amp;=&amp;-\cfrac{1}{m}\sum_{i+1}^{m}[y_i\log(\hat y_i)+(1-y_i)log(1-\log(\hat y_i))]\end{array}$$ 关于LR的Cost Function我的理解:首先是合理性上，从公式看当$y^{(i)}=1$时，则损失函数可以简化为$J(\omega,b)=-\log({\hat y^{(i)}})$，则当$\hat y^{(i)}\to0$时，$J\to\infty$,即Cost趋近于无穷。当$\hat y^{(i)}\to1$时，$J\to 0$,即Cost趋近于0.$y^{(i)}=0$时，同理。所以这个Cost Function从概念上是符合我们的要求的。推导：将$y$视作是样本为正例的概率，则$1-y$是反例的概率,即：$$\begin{array}\\P(y=1|\boldsymbol x)=\hat y \\P(y=0|\boldsymbol x)=1-\hat y\end{array}$$结合上述二式则有：$$P(y|\boldsymbol x;\boldsymbol\omega,b)=\hat y^y(1-\hat y)^{(1-y)}$$有了条件概率公式我们则可以用极大似然估计求解参数，取$P(y|\boldsymbol x;\boldsymbol\omega,b)$在整个训练集上的似然函数有：$$L(\boldsymbol \omega,b)=\prod_{i=1}^{m}{\left[(\hat y_i)^{y_i}(1-\hat y_i)^{(1-y_i)}\right]}$$对似然函数取对数有：$$l(\boldsymbol\omega,b )=\mathrm{log}L(\boldsymbol \omega,b)=\sum_{i=1}^{m}{[y_i\mathrm{log}(\hat y _i)+(1-y_i)\mathrm{log}(1-\hat y_i)]}$$极大似然估计就是要求得使$l(\boldsymbol \omega,b)$最大时的$\boldsymbol\omega$和$b$的值，这里可以用极大似然估计本身的解法或者梯度上升法解决。而cost function值越小越好，所以Andrew Ng的课件里在$l(\boldsymbol \omega,b)$前乘了个系数$-\cfrac1m$当做最终的cost fucntion：$$J(\boldsymbol \omega,b)=-\cfrac1ml(\boldsymbol\omega,b )$$这样一来求使cost fucntion最小的$（\boldsymbol\omega,b）$就等于求解在给定样本情况下极大似然估计。 梯度下降法最最开始的时候没搞清楚梯度下降法和最小二乘法的区别，梯度下降法是求解非线性最小二乘法（没有闭式解）的方法之一。 为方便公式书写令$\boldsymbol\theta=(\boldsymbol\omega,b)$,则对$\boldsymbol\theta$的第$j$个属性按照梯度下降法更新则有： 这部分公式中的有的粗体用错了，之后有时间修正!!!!$$\theta_j=\theta_j-\alpha\cfrac{\partial J(\boldsymbol\theta)}{\partial\theta_j}$$具体梯度下降法过程推导如下：$$\begin{array}\\\cfrac{\partial J(\boldsymbol\theta)}{\partial\theta_j}&amp;=&amp;-\cfrac{\partial }{\theta_j}\cfrac1m\sum_{i=1}^m{[y_i\mathrm log(h_{\theta}(\boldsymbol x_i))+(1-y_i)\mathrm log(1-h_\theta(\boldsymbol x_i))]}\\&amp;=&amp;-\cfrac1m\sum_{i=1}^m{\left[y_i\cfrac{1}{h_\theta(\boldsymbol x_i)}\cfrac{\partial}{\partial\theta_j}h_\theta(\boldsymbol x_i)-(1-y_i)\cfrac1{1-h_\theta(\boldsymbol x_i)}\cfrac{\partial}{\partial\theta_j}{h_\theta(\boldsymbol x_i)}\right]}\\&amp;=&amp;-\cfrac1m\sum_{i=1}^m{\left[y_i\cfrac{1}{h_\theta(\boldsymbol x_i)}-(1-y_i)\cfrac1{1-h_\theta(\boldsymbol x_i)}\right]\cfrac{\partial}{\partial\theta_j}g(\theta^{\mathrm T}\boldsymbol x_i)}\end{array}$$而$$\begin{array}\\\cfrac{\partial}{\partial\theta_j}g(\theta^{\mathrm T}\boldsymbol x_i)&amp;=&amp;\cfrac{\partial}{\partial\theta_j}\cfrac{1}{1+\mathrm{e}^{-\theta^{\mathrm T}\boldsymbol x_i}}\\&amp;=&amp;\cfrac{\mathrm e^{-\theta^\mathrm T\boldsymbol x_i}}{(1+\mathrm e^{-\theta^\mathrm T\boldsymbol x_i})^2}\cfrac{\partial}{\partial\theta_j}\theta^{\mathrm T}\boldsymbol x_i\\&amp;=&amp;\cfrac{1}{1+\mathrm{e}^{-\theta^{\mathrm T}\boldsymbol x_i}}\cfrac{1+\mathrm{e}^{-\theta^{\mathrm T}\boldsymbol x_i}-1}{1+\mathrm{e}^{-\theta^{\mathrm T}\boldsymbol x_i}}\cfrac{\partial}{\partial\theta_j}\theta^{\mathrm T}\boldsymbol x_i\\&amp;=&amp;g(\theta^{\mathrm T}\boldsymbol x_i)(1-g(\theta^{\mathrm T}\boldsymbol x_i))x_{i,j}\end{array}$$其中$x_{i,j}$表示第i个样本中的第j个属性,且$h_\theta(\boldsymbol x_i)=g(\theta^{\mathrm T}\boldsymbol x_i)$所以：$$\begin{array}\\\cfrac{\partial J(\boldsymbol\theta)}{\partial\theta_j}&amp;=&amp;-\cfrac1m\sum_{i=1}^m{\left[y_i\cfrac{1}{h_\theta(\boldsymbol x_i)}-(1-y_i)\cfrac1{1-h_\theta(\boldsymbol x_i)}\right]}g(\theta^{\mathrm T}\boldsymbol x_i)(1-g(\theta^{\mathrm T}\boldsymbol x_i))x_{i,j}\\&amp;=&amp;-\cfrac1m\sum_{i=1}^m{\left[y_i(1-g(\theta^{\mathrm T}\boldsymbol x_i))-(1-y_i)g(\theta^{\mathrm T}\boldsymbol x_i)\right]}x_{i,j}\\&amp;=&amp;-\cfrac1m\sum_{i=1}^m{\left[y_i-g(\theta^{\mathrm T}\boldsymbol x_i)\right]}x_{i,j}\\&amp;=&amp; \cfrac1m\sum_{i=1}^m{\left[h_\theta(\boldsymbol x_i)-y_i\right]}x_{i,j}\end{array}$$所以$\theta_j$的更新公式可以写作：$$\theta_j=\theta_j-\alpha\cfrac1m\sum_{i=1}^m{\left[h_\theta(\boldsymbol x_i)-y_i\right]}x_{i,j}$$ 参考文献]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>笔记</tag>
+        <tag>算法</tag>
+        <tag>LR</tag>
+        <tag>逻辑回归</tag>
       </tags>
   </entry>
   <entry>
