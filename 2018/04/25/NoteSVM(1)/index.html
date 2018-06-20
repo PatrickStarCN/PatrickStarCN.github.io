@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="测不准的猫的博客">
 <meta property="og:description" content="支持向量机是一种二分类模型，是特征空间上间隔最大化的线性分类器。这篇是关于SVM的笔记。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-10T08:01:21.207Z">
+<meta property="og:updated_time" content="2018-06-20T02:44:06.043Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习笔记之SVM(支持向量机)">
 <meta name="twitter:description" content="支持向量机是一种二分类模型，是特征空间上间隔最大化的线性分类器。这篇是关于SVM的笔记。">
@@ -70,7 +70,7 @@ var _hmt = _hmt || [];
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/学习/">工作&amp;学习</a></li>
+				<li><a href="/tags/笔记/">工作&amp;学习</a></li>
 	        
 				<li><a href="/tags/杂谈/">杂谈</a></li>
 	        
@@ -152,7 +152,7 @@ var _hmt = _hmt || [];
 				
 					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/学习/">工作&amp;学习</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/笔记/">工作&amp;学习</a></li>
 		        
 					<li style="width: 33.333333333333336%"><a href="/tags/杂谈/">杂谈</a></li>
 		        
@@ -198,7 +198,9 @@ var _hmt = _hmt || [];
 <li style="list-style: none"><input type="checkbox"> <strong>算法实现</strong></li>
 <li style="list-style: none"><input type="checkbox"> <strong>一些疑问</strong></li>
 </ul>
-<p>基于训练集，SVM想找到一个最优划分超平面将不同的类别分开，学习的策略是使间隔最大化（之后说明），则该超平面可以写成：<br>\begin{align}<br>\boldsymbol w^\mathrm{T}\boldsymbol x+b=0<br>\end{align}<br>其中$\boldsymbol w$为超平面法向量决定超平面方向，$b$为位移项决定超平面与原点的距离。<br>令$f(\boldsymbol x)=\boldsymbol w^\mathrm{T}\boldsymbol x+b$则$f(\boldsymbol x)=0$时表示$\boldsymbol x$在超平面上。</p>
+<p>基于训练集，SVM想找到一个最优划分超平面将不同的类别分开，学习的策略是使间隔最大化（之后说明），则该超平面可以写成：</p>
+<p>$$<br>\boldsymbol w^\mathrm{T}\boldsymbol x+b=0<br>$$</p>
+<p>其中$\boldsymbol w$为超平面法向量决定超平面方向，$b$为位移项决定超平面与原点的距离。<br>令$f(\boldsymbol x)=\boldsymbol w^\mathrm{T}\boldsymbol x+b$则$f(\boldsymbol x)=0$时表示$\boldsymbol x$在超平面上。</p>
 <p>样本数据线性可分的情况下，我们假设当$f(\boldsymbol x)&gt;0$时令其所对应的$y=+1$,当$f(\boldsymbol x)&lt;0$时令其所对应的$y=-1$</p>
 <div class="note info"><p>SVM为什么采用间隔最大化？<br><br>当训练数据线性可分时，存在无穷个分离超平面可以将两类数据正确分开。<br><br>感知机利用误分类最小策略，求得分离超平面，不过此时的解有无穷多个。<br><br>线性可分支持向量机利用间隔最大化求得最优分离超平面，这时，解是唯一的。另一方面，此时的分隔超平面所产生的分类结果是最鲁棒的，对未知实例的泛化能力最强。</p></div>
 
