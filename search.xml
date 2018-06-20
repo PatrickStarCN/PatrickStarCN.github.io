@@ -1,86 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[knn(k-nearest neighbor)]]></title>
-    <url>%2F2018%2F05%2F20%2Fknn%2F</url>
-    <content type="text"><![CDATA[这节写knn,knn是一种基本的分类与回归方法。 knn的思想是，给一个指定训练集，新来一个输入就在训练集中找到与该输入最临近的k个点，再通过投票法看这k个点属于哪一个分类的多就把该点分到这个类别中。 knn的三个基本要素是，k值的选择，距离度量和分类决策规则。 KNN中的K值选取对分类的结果影响至关重要，K值选取的太小，模型太复杂。K值选取的太大，导致分类模糊。那么K值到底怎么选取呢？有人用Cross Validation，有人用贝叶斯，还有的用bootstrap。 距离度量KNN一般使用欧式距离。 KNN一般采取多数表决的决策规则。 算法基本步骤： 计算待分类点与已知类别的点之间的距离 按照距离递增次序排序 选取与待分类点距离最小的k个点 确定前k个点所在类别的出现次数 返回前k个点出现次数最高的类别作为待分类点的预测分类knn的缺陷： 该算法在分类时有个重要的不足是，当样本不平衡时，即：一个类的样本容量很大，而其他类样本数量很小时，很有可能导致当输入一个未知样本时，该样本的K个邻居中大数量类的样本占多数。 但是这类样本并不接近目标样本，而数量小的这类样本很靠近目标样本。这个时候，我们有理由认为该位置样本属于数量小的样本所属的一类，但是，KNN却不关心这个问题，它只关心哪类样本的数量最多，而不去把距离远近考虑在内，因此，我们可以采用权值的方法来改进。和该样本距离小的邻居权值大，和该样本距离大的邻居权值则相对较小，由此，将距离远近的因素也考虑在内，避免因一个样本过大导致误判的情况。 从算法实现的过程可以发现，knn需要存储全部的训练样本。 计算量较大，因为对每一个待分类的样本都要计算它到全体已知样本的距离，才能求得它的K个最近邻点。 KNN算法的改进方法之一是分组快速搜索近邻法。其基本思想是：将样本集按近邻关系分解成组，给出每组质心的位置，以质心作为代表点，和未知样本计算距离，选出距离最近的一个或若干个组，再在组的范围内应用一般的KNN算法。由于并不是将未知样本与所有样本计算距离，故该改进算法可以减少计算量，但并不能减少存储量。 KNN的实现：kd tree实现knn最简单的方法是线性扫描，计算当前点与所有训练点之间的距离，但是当训练集大时这种方法耗时效率低，这时可以采取kd tree来减少计算。]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-        <tag>笔记</tag>
-        <tag>算法</tag>
-        <tag>KNN</tag>
-        <tag>kd tree</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[天池阿里妈妈广告转化率预测比赛总结]]></title>
-    <url>%2F2018%2F05%2F19%2F%E5%A4%A9%E6%B1%A0%E9%98%BF%E9%87%8C%E5%A6%88%E5%A6%88%E5%B9%BF%E5%91%8A%E8%BD%AC%E5%8C%96%E7%8E%87%E9%A2%84%E6%B5%8B%E6%AF%94%E8%B5%9B%E6%80%BB%E7%BB%93%2F</url>
-    <content type="text"><![CDATA[第一次参加比赛，进了复赛由于小破本跑不动复赛数据集所以没有调整特征及模型，只跑了一次提交，最后203/5204，成绩作为第一次参赛还算不错，总结一下这次比赛遇到的问题和学到的东西。 ##]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-        <tag>算法</tag>
-        <tag>比赛</tag>
-        <tag>总结</tag>
-        <tag>xgboost</tag>
-        <tag>LightGbm</tag>
-        <tag>stacking</tag>
-        <tag>特征工程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[机器学习笔记之SVM3(支持向量机)]]></title>
-    <url>%2F2018%2F05%2F17%2F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BSVM3(%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA)%2F</url>
-    <content type="text"><![CDATA[这一节写SMO算法。 序列最小最优化算法（SMO）在之前的两节我们要解出如下问题:\begin{align}&amp;\max\limits_{\alpha_i}-\cfrac{1}{2}\sum_{i=1}^m\sum_{j=1}^m{\alpha_iy_i\alpha_jy_j(\boldsymbol x_j\cdot\boldsymbol x_i)}+\sum_{i=1}^m\alpha_i\\&amp;\begin{array}\\s.t.&amp;\sum_{i=1}^{m}{\alpha_iy_i}=0\\&amp;\alpha_i\geq0,i=1,2,…,m\\\end{array}\end{align}这个问题的规模正比于训练样本数,要求解m个参数$\alpha_1…\alpha_m$,需要高效的算法求解,所以有SMO。 SMO的基本思路是把原始求解N个参数二次规划问题分解成很多个子二次规划问题分别求解，每个子问题只需要求解2个参数,每次启发式选择两个变量进行优化，不断循环，直到达到函数最优值。]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-        <tag>笔记</tag>
-        <tag>算法</tag>
-        <tag>SVM</tag>
-        <tag>支持向量机</tag>
-        <tag>SMO</tag>
-        <tag>序列最小最优化算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[朴素贝叶斯(naive Bayes)]]></title>
-    <url>%2F2018%2F05%2F13%2F%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%2F</url>
-    <content type="text"><![CDATA[朴素贝叶斯是一种基于贝叶斯定理和特征条件独立假设的分类算法。。 朴素贝叶斯的朴素二字来源于它的假设:特征条件独立分布。这是一个比较强的假设。 基本概念贝叶斯定理的公式如下:\begin{align}P(Y|\boldsymbol X)=\cfrac{P(\boldsymbol X|Y)P(Y)}{P(\boldsymbol X)}\label{eq:(1)}\end{align} 贝叶斯公式可以由条件概率公式推到出来。贝叶斯定理也可以被写成如下方式:\begin{align}后验概率=\cfrac{条件概率*先验概率}{现象概率}\end{align}为了更好的理解:\begin{align}P(给定天上有乌云，下雨的概率)=\cfrac{P(给定天上下雨，有乌云的概率)P(下雨的概率)}{P(有乌云的概率)}\end{align}我们可以看到，如果我们想要在给定现象下，预测某种结果的概率，我们必须知道：1、在给定这种结果下，出现这种现象的概率。2、出现这种结果的概率。3、出现这种现象的概率。在朴素贝叶斯分类里贝叶斯定理可以写作:\begin{align}P(类别|特征)=\cfrac{P(特征|类别)P(类别)}{P(特征)}\end{align}朴素贝叶斯的目标是分别计算在给定特征下各类别的概率，即$P(Y=c_j|\boldsymbol X)$并选出最大概率时的类别作为当前特征对应的类别。在特征条件独立分布的假设下，$\eqref{eq:(1)}$式可以被重写为:\begin{align}P(Y|\boldsymbol X)=\cfrac{P(\boldsymbol X|Y)P(Y)}{P(\boldsymbol X)}=\cfrac{P(Y)}{P(\boldsymbol X)}\prod_{i=1}^mP(X_i|Y)\end{align}其中$P(\boldsymbol X)$对于指定的样本是一个常量，所以贝叶斯分类模型可以写成:\begin{align}y=\arg\max\limits_YP(Y)\prod_{i=1}^mP(X_i|Y)\end{align}即用已知的类变量$Y$的所有可能的值计算概率，并选择输出概率是最大的结果,从这里也可以看出来这是个生成模型。在独立同分布的情况下有:\begin{align}&amp;P(\boldsymbol X|Y)=\prod_{i=1}^mP(X_i|Y)\\&amp;P(\boldsymbol X)=\prod_{i=1}^mP(X_i)\end{align} 朴素贝叶斯分类中实际就是求后验概率最大化的类,这等价于期望风险最小化。朴素贝叶斯的参数估计一般用极大似然估计。 拉普拉斯平滑在分类模型中如果某测试集特征在训练的时候从来没出现过，会导致后验概率为0，这时候需要用拉普拉斯平滑(Laplace smoothing)进行修正。]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-        <tag>笔记</tag>
-        <tag>算法</tag>
-        <tag>朴素贝叶斯</tag>
-        <tag>拉普拉斯平滑</tag>
-        <tag>极大似然估计</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[数学基础之极大似然估计（MLE）]]></title>
-    <url>%2F2018%2F04%2F25%2FMLE%2F</url>
-    <content type="text"><![CDATA[“概率论只不过是把常识用数学公式表达了出来” —拉普拉斯 极大似然估计是机器学习算法常用的的一种参数估计方法，这篇文章是MLE和相关概念的笔记。 一些概念：先验概率，事情还没有发生，要求这件事情发生的可能性的大小，是根据以往经验和分析得到的概率。后验概率，事情已经发生，要求这件事情发生的原因是由某个因素引起的可能性的大小。条件概率， 贝叶斯公式条件概率公式：$$P(A|B)=\frac{P(AB)}{P(B)}$$贝叶斯公式可以由条件概率公式推到出来：$$P(A_i|B)=\frac{P(A_iB)}{P(B)}=\frac{P(B|A_i)P(A_i)}{P(B)}$$贝叶斯公式中各部分含义： $P(A_i)$,$A_i$的先验概率 $P(B)$,$B$的先验概率 $P(A_i|B)$, 直观上理解，贝叶斯公式描述的是在$B$发生的情况下，$A_i$的概率 极大似然估计（MLE）]]></content>
-      <categories>
-        <category>数学基础</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-        <tag>笔记</tag>
-        <tag>数学</tag>
-        <tag>概率学</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[生成方法与判定方法]]></title>
     <url>%2F2018%2F04%2F25%2FGenApp-and-DisApp%2F</url>
     <content type="text"><![CDATA[监督学习方法分生成方法与判定方法，这篇文章是关于二者理解的笔记。 李航老师的《《统计学习方法》P18:生成方法由数据学习联合概率分布$P(X,Y)$,然后再求条件概率分布作为预测模型。典型的生成模型有：朴素贝叶斯，隐马尔科夫模型。判别方法有数据直接学习决策函数$f(X)$或者条件概率分布$P(XY)$作为预测模型。典型的判定模型有：KNN，决策树，LR，SVM等。 生成方法的特点：生成方法可以还原联合概率分布，而判别方法则不能；生成方法的学习收敛速度更快，即当样本容量增加的时候，学习的模型可以更快的收敛于真实的模型；当存在隐变量时，仍可以用生成方法学习，此时判别方法就不能用。 判别方法的特点：判别方法直接学习的是条件概率或者决策函数，直接面对预测，往往学习的准确率更高；由于直接学习或者，可以对数据进行各种程度上的抽象、定义特征并使用特征，因此可以简化学习问题。 生成方法对于历史数据有多少个类别就要生成多少个模型，然后用新数据特征去匹配这些模型，取最符合的。 判别方法根据历史数据直接生成一个判别式，新数据进来直接就可以判断他属于哪一个类别。]]></content>
@@ -106,24 +26,6 @@
         <tag>算法</tag>
         <tag>SVM</tag>
         <tag>支持向量机</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[关于L0 L1 L2正则化]]></title>
-    <url>%2F2018%2F04%2F25%2F%E5%85%B3%E4%BA%8EL0%20L1%20L2%E6%AD%A3%E5%88%99%E5%8C%96%2F</url>
-    <content type="text"><![CDATA[在机器学习模型训练中，由于种种因素往往会出现过拟合的情况，处理的方法之一就是在原损失函数中加入正则化(即范数)项来防止过拟合，下面将一步步说明为什么正则项能够防止过拟合。 概念$0$范数，向量中非零元素的个数。 可以获得稀疏模型 较难求解 $1$范数，为绝对值之和。 是$L0$范数的最优凸近似 比$0$范数容易求解 可以获得稀疏解 $2$范数，就是通常意义上的模。 让模型参数接近于零，防止过拟合 以线性回归为例,以平方误差为损失函数，则优化目标为：\begin{align}\min\limits_{\boldsymbol w}\sum_{i=1}^{m}(y_i-\boldsymbol w^{\mathrm T}\boldsymbol x_i)^2\end{align}样本特征多，样本数少的时候，会导致过拟合，此时可以加入正则化项,以$L2$范数为例:\begin{align}\min\limits_{\boldsymbol w}\sum_{i=1}^{m}(y_i-\boldsymbol w^{\mathrm T}\boldsymbol x_i)^2+\lambda||\boldsymbol w||_2^2\end{align}其中$\lambda&gt;0$叫做正则化参数,以$L2$范数作为正则项是上式被称作岭回归(ridge regression),以$L1$范数作为正则项则叫做$LASSO$。 在过拟合的情况下,线性回归模型得到的参数的数量较多,因为模型过多拟合导致函数复杂,这时加入$L0$,$L1$范数并最小化可以限制非零参数得到个数,从而简化模型防止过拟合。 加入$L2$范数可以让参数接近于0，参数小模型简单从而防止过拟合。 参数稀疏的好处： 特征选择(Feature Selection),自动让部分系数为零,挑选出有用的特征。 可解释性,非零参数少有助于可解释性。 避免过拟合。 参数值越小代表模型越简单吗？ 为什么参数越小，说明模型越简单呢，这是因为越复杂的模型，越是会尝试对所有的样本进行拟合，甚至包括一些异常样本点，这就容易造成在较小的区间里预测值产生较大的波动，这种较大的波动也反映了在这个区间里的导数很大，而只有较大的参数值才能产生较大的导数。因此复杂的模型，其参数值会比较大。]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-        <tag>笔记</tag>
-        <tag>数学</tag>
-        <tag>L0</tag>
-        <tag>L1</tag>
-        <tag>L2</tag>
-        <tag>过拟合</tag>
-        <tag>范数</tag>
       </tags>
   </entry>
   <entry>
@@ -156,19 +58,6 @@
         <tag>支持向量机</tag>
         <tag>soft SVM</tag>
         <tag>核技巧</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[机器学习性能评估指标]]></title>
-    <url>%2F2018%2F04%2F23%2FThePerformanceEvaluationOfMachineLearning%2F</url>
-    <content type="text"><![CDATA[机器学习在不同的业务需求下，需要使用不同的评估指标对算法效果进行评估，这篇文章将对常见的评估指标进行总结。 Todo list： 分类任务 Accuracy Precision Recall F1 Score Roc curve PR curve AUC 回归任务 MAE MSE 由于翻译问题，Accuracy（准确率），Precision(精确率，查准率)，Recall（召回率，查全率）中文表述会存在歧义，因此下文均用英文表述。 评估指标根据任务类型不同主要分为两类： 分类任务评估指标 Accuracy Precision Recall F1 Score Roc curve PR curve AUC 回归任务评价指标 MAE (Mean Absolute Error，绝对平均误差) MSE (Mean Squared Error，均方误差) 混淆矩阵提到评价方法首先我们先引入混淆矩阵（Confusion Matrix)的概念，因为接下来的分类任务的评价指标Accuracy，precision，recall，F1 score都可以用混淆举中的元素表示。 混淆矩阵是用来反映某一个分类模型的分类结果的，其中行代表的是真实的类，列代表的是模型的分类，如下表： 分类任务评价指标AccuracyAccuracy是评价指标里最易懂，最直观的一个。它的定义如下: $$ Accuracy= \frac{分类正确的样本数}{总样本数} $$ 用混淆矩阵表示就是：$$ Accuracy= \frac{TP+TN}{TP+TN+FP+FN} $$ 即Accuracy表示分类器正确分类的样本数与总样本数之比。 注意不均衡数据会对Accuracy产生极大影响。例如在做债务人逾期率预测任务时，逾期（即未在指定日期还款）的概率相对较低，在此我们假设100人里有一人逾期，如果分类器简单的把所有人都标记为非逾期（未进行预测），那么这个任务的Accuray将会是99%，99%的准确率看起来很高，然而并未反应分类器的好坏（分类器只是简单地标记所有样本为非逾期）。 Precision 和 Recall先从混淆矩阵定义来看Precision和Recall的定义：$$ Presion= \frac{TP}{TP+FP} $$$$ Recall= \frac{TP}{TP+FN} $$TP表示预测为正例中真正的正样本数，TP+FP表示预测为正的所有样本数，所以Precision表示的是预测为正例的样本中有多少是真正的正例。 同理TP+FN表示样本中正例的总数，所以Recall表示的是样本中的正例被准确预测的比例。 Precision和Recall有着自己的侧重点，在不同的业务需求下重要性也不同。下面举例说明： 推荐算法中，往往会给用户推荐较多的候补项，这时候我们希望我们推荐的候补项中尽可能多的是用户感兴趣的内容，这种情况我们希望Precision尽可能的大。 地震预测任务中，我们宁愿误报也不愿意错过一次可能的正确预测，所以我们的侧重点就是尽可能的提高样本中的正例被准确预测的比例，如果100次任务里只有一次地震，我们要提高这次地震被预测出来的概率，也就是“宁可错杀以前也不愿放走一个”，这种情况就希望Recall尽可能的大。 F1 ScoreF1 Score是一个综合考虑Precision和Recall的评价指标，他的定义是二者的调和平均：$$F1=\frac{1}{\frac{1}{2}(\frac{1}{Precision}+\frac{1}{Recall})}\implies F1=\frac{2\cdot Precision\cdot Recall}{Precision+Recall}$$Precision和Recall都高时F1 Score也会高。 F1 Score的变种$F_\beta=（1+\beta^2）\cdot\frac{Precision \cdot Recall}{\beta^2 \cdot Precision+Recall}$运行我们通过调节$\beta$值来调整Precision和Recall的权重。其中$\beta&gt;0$,当$\beta&gt;1$时Precision有更大影响，$\beta&lt;1$时Recall有更大影响，$\beta=1$时就是标准的F1。 PR Curve###]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-        <tag>笔记</tag>
-        <tag>评估方法</tag>
       </tags>
   </entry>
 </search>
