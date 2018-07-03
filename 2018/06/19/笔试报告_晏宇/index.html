@@ -146,20 +146,30 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="测不准的猫的博客">
-<meta property="og:url" content="https://patrickstarcn.github.io/tags/支持向量机/index.html">
+  <meta name="description" content="拿到数据以发现特征只有一列,即资金流的流入流出情况,第一反应是惯性思维用熟悉的LSTM能不能解决问题,但也明白无论怎么从原有数据构造新特征在LSTM上的表现都应该不是很好，花了几个小时处理数据写完模型发现无论如何调整参数构造特征，模型都无法收敛而且过拟合严重,时间有限也无法严格验证LSTM是否有严格的可行性且对该数据业务不了解，所以放弃原有方案采用之前有了解过的符合该数据的ARIMA模型.">
+<meta name="keywords" content="LSTM,ARIMA,时间序列分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="笔试报告_蚂蚁金服">
+<meta property="og:url" content="https://patrickstarcn.github.io/2018/06/19/笔试报告_晏宇/index.html">
 <meta property="og:site_name" content="测不准的猫的博客">
+<meta property="og:description" content="拿到数据以发现特征只有一列,即资金流的流入流出情况,第一反应是惯性思维用熟悉的LSTM能不能解决问题,但也明白无论怎么从原有数据构造新特征在LSTM上的表现都应该不是很好，花了几个小时处理数据写完模型发现无论如何调整参数构造特征，模型都无法收敛而且过拟合严重,时间有限也无法严格验证LSTM是否有严格的可行性且对该数据业务不了解，所以放弃原有方案采用之前有了解过的符合该数据的ARIMA模型.">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://static.zybuluo.com/y21leaves/qf54d8sbjrx9g7pmztmib84l/1.png">
+<meta property="og:image" content="http://static.zybuluo.com/y21leaves/o5nk7158joo9zqr0vdxpg3of/3.png">
+<meta property="og:image" content="http://static.zybuluo.com/y21leaves/9epvrppwgtstyxc7ij5m7ix4/4.png">
+<meta property="og:image" content="http://static.zybuluo.com/y21leaves/c3fodf9uzrnyvi59pjw0rcen/5.png">
+<meta property="og:updated_time" content="2018-06-20T07:24:11.283Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="测不准的猫的博客">
+<meta name="twitter:title" content="笔试报告_蚂蚁金服">
+<meta name="twitter:description" content="拿到数据以发现特征只有一列,即资金流的流入流出情况,第一反应是惯性思维用熟悉的LSTM能不能解决问题,但也明白无论怎么从原有数据构造新特征在LSTM上的表现都应该不是很好，花了几个小时处理数据写完模型发现无论如何调整参数构造特征，模型都无法收敛而且过拟合严重,时间有限也无法严格验证LSTM是否有严格的可行性且对该数据业务不了解，所以放弃原有方案采用之前有了解过的符合该数据的ARIMA模型.">
+<meta name="twitter:image" content="http://static.zybuluo.com/y21leaves/qf54d8sbjrx9g7pmztmib84l/1.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://patrickstarcn.github.io/tags/支持向量机/"/>
+  <link rel="canonical" href="https://patrickstarcn.github.io/2018/06/19/笔试报告_晏宇/"/>
 
 
 
@@ -169,7 +179,7 @@
   };
 </script>
 
-  <title>标签: 支持向量机 | 测不准的猫的博客</title>
+  <title>笔试报告_蚂蚁金服 | 测不准的猫的博客</title>
   
 
 
@@ -224,7 +234,7 @@
   
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container  ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container  page-post-detail">
     <div class="headband"></div>
 	<a href="https://github.com/PatrickStarCN" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 
@@ -281,7 +291,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
   </li>
@@ -361,112 +371,318 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>支持向量机<small>标签</small>
-        </h2>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://patrickstarcn.github.io/2018/06/19/笔试报告_晏宇/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="测不准的猫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="测不准的猫的博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/04/25/NoteSVM(1)/" itemprop="url">
-              
-                <span itemprop="name">机器学习笔记之SVM(支持向量机)</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">笔试报告_蚂蚁金服
+              
+            
+          </h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-25T11:10:55+08:00"
-              content="2018-04-25" >
-          04-25
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
 
-    </header>
-  </article>
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-19 14:21:55" itemprop="dateCreated datePublished" datetime="2018-06-19T14:21:55+08:00">2018-06-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                <time title="修改时间：2018-06-20 15:24:11" itemprop="dateModified" datetime="2018-06-20T15:24:11+08:00">2018-06-20</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/笔试/" itemprop="url" rel="index"><span itemprop="name">笔试</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            <!--noindex-->
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/19/笔试报告_晏宇/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count hc-comment-count" data-xid="2018/06/19/笔试报告_晏宇/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+              <!--/noindex-->
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/25/机器学习笔记之SVM2(支持向量机)/" itemprop="url">
-              
-                <span itemprop="name">机器学习笔记之SVM2(支持向量机)</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-25T11:10:55+08:00"
-              content="2018-04-25" >
-          04-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
+        <p>拿到数据以发现特征只有一列,即资金流的流入流出情况,第一反应是惯性思维用熟悉的LSTM能不能解决问题,但也明白无论怎么从原有数据构造新特征在LSTM上的表现都应该不是很好，花了几个小时处理数据写完模型发现无论如何调整参数构造特征，模型都无法收敛而且过拟合严重,时间有限也无法严格验证LSTM是否有严格的可行性且对该数据业务不了解，所以放弃原有方案采用之前有了解过的符合该数据的ARIMA模型.<br><a id="more"></a></p>
+<h2 id="模型及方案选择"><a href="#模型及方案选择" class="headerlink" title="模型及方案选择"></a>模型及方案选择</h2><p>本次建模根据数据特征（时间序列数据，尝试LSTM和ARIMA模型，选择了时间序列模型ARIMA来预测渠道7月24日至7月28日每天从当日0点到24点的流入流出轧差值（总流入-总流出）。</p>
+<p>选择ARIMA方案的理由如下：</p>
+<pre><code>- 数据经检验为平稳模型，符合使用ARIMA模型的要求。
+- 有很多成功解决此类型问题的先例证明此模型的可靠性和有效性。
+- 特征过少不宜使用传统机器学习模型。
+- 模型较为简单易懂，在有限的笔试时间里我可以迅速上手。
+</code></pre><hr>
+<p>由于24日-28日的数据部分已经给出，即24日-28日每天10am前的数据已知。所以预测方案有两个：</p>
+<pre><code>1. 直接舍弃24日至28日的数据，以天为单位统计每日流入流出轧差值，并以此建模，直接预测24日-28日每日流入流出轧差值。
+2. 不舍弃24日至28日的数据,以小时为单位统计计算每小时的流入流出，以此建模，预测24日-28日每日10am后的小时流入流出情况，并和当日已知流入流出情况汇总，得到最终的每日流出轧差值的预测值。
+</code></pre><hr>
+<p>从业务方面考虑，初步认为流入流出轧差值以天为细粒度较为合理，理由如下：</p>
+<pre><code>1. 小时细粒度具有极大的随机性，突发金额流入流出的情况会影响模型的准确性。
+2.一般业务情境中，资金流入流出以天为细粒度具有规律性（数据中也可以大致看出），突发情况较少。
+3.月细粒度会导致数据过少，建模困难。
+</code></pre><hr>
+<h2 id="预测结果及分析"><a href="#预测结果及分析" class="headerlink" title="预测结果及分析"></a>预测结果及分析</h2><p>由于初次上手ARIMA模型，主要时间花在参数了解和写模型上，参数未能精细调整，可能会影响部分结果，我会在后面写出可能的改进方案。</p>
+<h3 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h3><p>由于不了解业务，无法对数据中的异常值进行判断，对于5个缺失值选择用每五分钟的流入流出均值代替，有3340个时间点同时有$RE$和$SE$两种amount，业务情况不清楚所以暂不处理。对$RE$的值标记为负。之后按天聚合得到的数据如图（去除24-29日的数据）：</p>
+<p><img src="http://static.zybuluo.com/y21leaves/qf54d8sbjrx9g7pmztmib84l/1.png" alt="1.png-28.6kB"></p>
+<p>上图基本显示出了一定的平稳性，在一个数值左右波动（如果想更明确，可以计算一维差分来用），通过<code>Dickey-Fuller Test</code>来检验其平稳性,结果如下：</p>
+<pre><code>Results of Dickey-Fuller Test:
+Test Statistic                  -4.917220
+p-value                          0.000032
+#Lags Used                       1.000000
+Number of Observations Used    202.000000
+Critical value (1%)             -3.463144
+Critical value (5%)             -2.875957
+Critical value (10%)            -2.574455
+dtype: float64
+</code></pre><p><code>Test Statistic</code>小于置信度为1%时的值，且<code>p</code>值远小于0.05，说明序列平稳。</p>
+<p>接下来通过$ACF$,$PACF$进行$ARIMA（p，d，q)$的$p$，$q$参数估计：</p>
+<p><img src="http://static.zybuluo.com/y21leaves/o5nk7158joo9zqr0vdxpg3of/3.png" alt="3.png-13.9kB"></p>
+<p>参数$d=0$为差分的阶数，从$ACF$,$PACF$图中得到$p=9$,$q=3$.</p>
+<p>带入$ARIMA$模型后得到,24日前的历史模拟情况对比：</p>
+<p><img src="http://static.zybuluo.com/y21leaves/9epvrppwgtstyxc7ij5m7ix4/4.png" alt="4.png-35.9kB"></p>
+<p>预测24日-28日的情况如图：</p>
+<p><img src="http://static.zybuluo.com/y21leaves/c3fodf9uzrnyvi59pjw0rcen/5.png" alt="5.png-26kB"></p>
+<p>24日-28日对应的资金流入流出轧差值的预测值为：</p>
+<pre><code>07.24    248680.669874
+07.25    223628.952776
+07.26    212744.495103
+07.27    201486.709855
+07.28    190364.054472
+</code></pre><hr>
+<h3 id="结果说明及可能的改进"><a href="#结果说明及可能的改进" class="headerlink" title="结果说明及可能的改进"></a>结果说明及可能的改进</h3><p>现学了$ARIMA$中间肯定存在理解失误或者细节调整有问题的地方。从历史拟合数据看，均方根误差较大存在一定的误差，但数据大体趋势正确。</p>
+<p>可能的改进方案如下：</p>
+<pre><code>1.依然沿用ARIMA这个解决方案，但调整细节及相关参数（误差白噪声检查，BIC确定p，q值等）。
+2.收集更多维度的特征（如交易笔数，交易渠道等），换用LSTM，RNN等深度学习或者机器学习的时序模型
+3.花更多的时间去寻求业务上的规律
+4.寻求其他的计量经济学模型并进行模型融合以减少误差
+</code></pre><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a href="https://www.cnblogs.com/bradleon/p/6827109.html" target="_blank" rel="noopener">https://www.cnblogs.com/bradleon/p/6827109.html</a></li>
+<li><a href="https://blog.csdn.net/gdyflxw/article/details/55509656" target="_blank" rel="noopener">https://blog.csdn.net/gdyflxw/article/details/55509656</a></li>
+</ol>
 
       
     </div>
 
+    
+      
+
+
+    
+
+    
+    
+    
+	
+	<div>
+	
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束,感谢您的阅读-------------</div>
+    
+</div>
+    
+	</div>
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>测不准的猫</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://patrickstarcn.github.io/2018/06/19/笔试报告_晏宇/" title="笔试报告_蚂蚁金服">https://patrickstarcn.github.io/2018/06/19/笔试报告_晏宇/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LSTM/" rel="tag"><i class="fa fa-tag"></i> LSTM</a>
+          
+            <a href="/tags/ARIMA/" rel="tag"><i class="fa fa-tag"></i> ARIMA</a>
+          
+            <a href="/tags/时间序列分析/" rel="tag"><i class="fa fa-tag"></i> 时间序列分析</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/25/GenApp-and-DisApp/" rel="next" title="生成方法与判定方法">
+                <i class="fa fa-chevron-left"></i> 生成方法与判定方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      <div id="hypercomments_widget"></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -487,8 +703,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -627,6 +852,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#模型及方案选择"><span class="nav-number">1.</span> <span class="nav-text">模型及方案选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预测结果及分析"><span class="nav-number">2.</span> <span class="nav-text">预测结果及分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据处理"><span class="nav-number">2.1.</span> <span class="nav-text">数据处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果说明及可能的改进"><span class="nav-number">2.2.</span> <span class="nav-text">结果说明及可能的改进</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -774,6 +1015,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
 
   
 
@@ -793,6 +1038,8 @@
 
 		_hcwp.push({widget:"Bloggerstream", widget_id: 103881, selector:".hc-comment-count", label: "{\%COUNT%\}" });
 
+		
+		_hcwp.push({widget:"Stream", widget_id: 103881, xid: "2018/06/19/笔试报告_晏宇/"});
 		
 
 		(function() {
@@ -1165,7 +1412,59 @@
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(bp, s);
 })();
-</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 10965,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -1184,18 +1483,6 @@
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
 
-
-  
-  
-
-  
-  
-
-  
-
-
-  
-  
 
   
 
